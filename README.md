@@ -2,6 +2,8 @@
 Here you can find all scripts from the RbxScript.com
 
 ~~All scripts are official~~, I have no right to add something of my own to these scripts.
+
+You maybe will think, why you are reposting scripts here. I am posting scripts, that are obfuscated. Agree, it is very convenient that long scripts can be pushed into the loadstring!
 # How to execute scripts?
 1. Choose the game you want
 2. Open the Raw version of this script
