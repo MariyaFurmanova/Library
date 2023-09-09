@@ -1,0 +1,4810 @@
+
+local Rayfield = loadstring(game:HttpGet('https://sirius.menu/rayfield'))()
+
+local Window = Rayfield:CreateWindow({
+   Name = "Universal Normal GUI",
+   LoadingTitle = "Universal Ghost GUI",
+   LoadingSubtitle = "by Ghost",
+   ConfigurationSaving = {
+      Enabled = false,
+      FolderName = nil, -- Create a custom folder for your hub/game
+      FileName = "universalGUI"
+   },
+   Discord = {
+      Enabled = false,
+      Invite = "noinvitelink", -- The Discord invite code, do not include discord.gg/. E.g. discord.gg/ABCD would be ABCD
+      RememberJoins = true -- Set this to false to make them join the discord every time they load it up
+   },
+   KeySystem = false, -- Set this to true to use our key system
+   KeySettings = {
+      Title = "Universal Ghost GUI",
+      Subtitle = "Key System",
+      Note = "No method of obtaining the key is provided",
+      FileName = "Key", -- It is recommended to use something unique as other scripts using Rayfield may overwrite your key file
+      SaveKey = true, -- The user's key will be saved, but if you change the key, they will be unable to use your script
+      GrabKeyFromSite = false, -- If this is true, set Key below to the RAW site you would like Rayfield to get the key from
+      Key = {"Hello"} -- List of keys that will be accepted by the system, can be RAW file links (pastebin, github etc) or simple strings ("hello","key22")
+   }
+})
+
+local MainTab = Window:CreateTab("Cheats", nil) -- Title, Image
+local MainSection = MainTab:CreateSection("Main") 
+
+Rayfield:Notify({
+   Title = "GUI Executed",
+   Content = "This gui works for every game, it's mainly made for starter exploiters",
+   Duration = 5.5,
+   Image = nil,
+   Actions = { -- Notification Buttons
+      Ignore = {
+         Name = "Okay!",
+         Callback = function()
+         print("The user tapped Okay!")
+      end
+   },
+},
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Admin (Infinite Yield)",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source'))()	
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Universal Aimbot (BY EXECUTING THIS YOU WILL CLOSE THE GUI)",
+   Callback = function()
+
+local loadstring, getgenv, setclipboard, tablefind, UserInputService = loadstring, getgenv, setclipboard, table.find, game:GetService("UserInputService")
+
+--// Loaded check
+
+if getgenv().AirHub then return end
+
+--// Environment
+
+getgenv().AirHub = {}
+
+--// Load Modules
+
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/Modules/Aimbot.lua"))()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/Modules/Wall%20Hack.lua"))()
+
+--// Variables
+
+local Library = loadstring(game:GetObjects("rbxassetid://7657867786")[1].Source)() -- Pepsi's UI Library
+local Aimbot, WallHack = getgenv().AirHub.Aimbot, getgenv().AirHub.WallHack
+local Parts, Fonts, TracersType = {"Head", "HumanoidRootPart", "Torso", "Left Arm", "Right Arm", "Left Leg", "Right Leg", "LeftHand", "RightHand", "LeftLowerArm", "RightLowerArm", "LeftUpperArm", "RightUpperArm", "LeftFoot", "LeftLowerLeg", "UpperTorso", "LeftUpperLeg", "RightFoot", "RightLowerLeg", "LowerTorso", "RightUpperLeg"}, {"UI", "System", "Plex", "Monospace"}, {"Bottom", "Center", "Mouse"}
+
+--// Frame
+
+Library.UnloadCallback = function()
+	Aimbot.Functions:Exit()
+	WallHack.Functions:Exit()
+	getgenv().AirHub = nil
+end
+
+local MainFrame = Library:CreateWindow({
+	Name = "AirHub",
+	Themeable = {
+		Image = "7059346386",
+		Info = "Made by Exunys\nPowered by Pepsi's UI Library",
+		Credit = false
+	},
+	Background = "",
+	Theme = [[{"__Designer.Colors.topGradient":"3F0C64","__Designer.Colors.section":"C259FB","__Designer.Colors.hoveredOptionBottom":"4819B4","__Designer.Background.ImageAssetID":"rbxassetid://4427304036","__Designer.Colors.selectedOption":"4E149C","__Designer.Colors.unselectedOption":"482271","__Designer.Files.WorkspaceFile":"AirHub","__Designer.Colors.unhoveredOptionTop":"310269","__Designer.Colors.outerBorder":"391D57","__Designer.Background.ImageColor":"69009C","__Designer.Colors.tabText":"B9B9B9","__Designer.Colors.elementBorder":"160B24","__Designer.Background.ImageTransparency":100,"__Designer.Colors.background":"1E1237","__Designer.Colors.innerBorder":"531E79","__Designer.Colors.bottomGradient":"361A60","__Designer.Colors.sectionBackground":"21002C","__Designer.Colors.hoveredOptionTop":"6B10F9","__Designer.Colors.otherElementText":"7B44A8","__Designer.Colors.main":"AB26FF","__Designer.Colors.elementText":"9F7DB5","__Designer.Colors.unhoveredOptionBottom":"3E0088","__Designer.Background.UseBackgroundImage":false}]]
+})
+
+--// Tabs
+
+local AimbotTab = MainFrame:CreateTab({
+	Name = "Aimbot"
+})
+
+local VisualsTab = MainFrame:CreateTab({
+	Name = "Visuals"
+})
+
+local CrosshairTab = MainFrame:CreateTab({
+	Name = "Crosshair"
+})
+
+local FunctionsTab = MainFrame:CreateTab({
+	Name = "Functions"
+})
+
+--// Aimbot Sections
+
+local Values = AimbotTab:CreateSection({
+	Name = "Values"
+})
+
+local Checks = AimbotTab:CreateSection({
+	Name = "Checks"
+})
+
+local ThirdPerson = AimbotTab:CreateSection({
+	Name = "Third Person"
+})
+
+local FOV_Values = AimbotTab:CreateSection({
+	Name = "Field Of View",
+	Side = "Right"
+})
+
+local FOV_Appearance = AimbotTab:CreateSection({
+	Name = "FOV Circle Appearance",
+	Side = "Right"
+})
+
+--// Visuals Sections
+
+local WallHackChecks = VisualsTab:CreateSection({
+	Name = "Checks"
+})
+
+local ESPSettings = VisualsTab:CreateSection({
+	Name = "ESP Settings"
+})
+
+local BoxesSettings = VisualsTab:CreateSection({
+	Name = "Boxes Settings"
+})
+
+local ChamsSettings = VisualsTab:CreateSection({
+	Name = "Chams Settings"
+})
+
+local TracersSettings = VisualsTab:CreateSection({
+	Name = "Tracers Settings",
+	Side = "Right"
+})
+
+local HeadDotsSettings = VisualsTab:CreateSection({
+	Name = "Head Dots Settings",
+	Side = "Right"
+})
+
+local HealthBarSettings = VisualsTab:CreateSection({
+	Name = "Health Bar Settings",
+	Side = "Right"
+})
+
+--// Crosshair Sections
+
+local CrosshairSettings = CrosshairTab:CreateSection({
+	Name = "Settings"
+})
+
+local CrosshairSettings_CenterDot = CrosshairTab:CreateSection({
+	Name = "Center Dot Settings",
+	Side = "Right"
+})
+
+--// Functions Sections
+
+local FunctionsSection = FunctionsTab:CreateSection({
+	Name = "Functions"
+})
+
+--// Aimbot Values
+
+Values:AddToggle({
+	Name = "Enabled",
+	Value = Aimbot.Settings.Enabled,
+	Callback = function(New, Old)
+		Aimbot.Settings.Enabled = New
+	end
+}).Default = Aimbot.Settings.Enabled
+
+Values:AddToggle({
+	Name = "Toggle",
+	Value = Aimbot.Settings.Toggle,
+	Callback = function(New, Old)
+		Aimbot.Settings.Toggle = New
+	end
+}).Default = Aimbot.Settings.Toggle
+
+Aimbot.Settings.LockPart = Parts[1]; Values:AddDropdown({
+	Name = "Lock Part",
+	Value = Parts[1],
+	Callback = function(New, Old)
+		Aimbot.Settings.LockPart = New
+	end,
+	List = Parts,
+	Nothing = "Head"
+}).Default = Parts[1]
+
+Values:AddTextbox({ -- Using a Textbox instead of a Keybind because the UI Library doesn't support Mouse inputs like Left Click / Right Click...
+	Name = "Hotkey",
+	Value = Aimbot.Settings.TriggerKey,
+	Callback = function(New, Old)
+		Aimbot.Settings.TriggerKey = New
+	end
+}).Default = Aimbot.Settings.TriggerKey
+
+--[[
+Values:AddKeybind({
+	Name = "Hotkey",
+	Value = Aimbot.Settings.TriggerKey,
+	Callback = function(New, Old)
+		Aimbot.Settings.TriggerKey = stringmatch(tostring(New), "Enum%.[UserInputType]*[KeyCode]*%.(.+)")
+	end,
+}).Default = Aimbot.Settings.TriggerKey
+]]
+
+Values:AddSlider({
+	Name = "Sensitivity",
+	Value = Aimbot.Settings.Sensitivity,
+	Callback = function(New, Old)
+		Aimbot.Settings.Sensitivity = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = Aimbot.Settings.Sensitivity
+
+--// Aimbot Checks
+
+Checks:AddToggle({
+	Name = "Team Check",
+	Value = Aimbot.Settings.TeamCheck,
+	Callback = function(New, Old)
+		Aimbot.Settings.TeamCheck = New
+	end
+}).Default = Aimbot.Settings.TeamCheck
+
+Checks:AddToggle({
+	Name = "Wall Check",
+	Value = Aimbot.Settings.WallCheck,
+	Callback = function(New, Old)
+		Aimbot.Settings.WallCheck = New
+	end
+}).Default = Aimbot.Settings.WallCheck
+
+Checks:AddToggle({
+	Name = "Alive Check",
+	Value = Aimbot.Settings.AliveCheck,
+	Callback = function(New, Old)
+		Aimbot.Settings.AliveCheck = New
+	end
+}).Default = Aimbot.Settings.AliveCheck
+
+--// Aimbot ThirdPerson
+
+ThirdPerson:AddToggle({
+	Name = "Enable Third Person",
+	Value = Aimbot.Settings.ThirdPerson,
+	Callback = function(New, Old)
+		Aimbot.Settings.ThirdPerson = New
+	end
+}).Default = Aimbot.Settings.ThirdPerson
+
+ThirdPerson:AddSlider({
+	Name = "Sensitivity",
+	Value = Aimbot.Settings.ThirdPersonSensitivity,
+	Callback = function(New, Old)
+		Aimbot.Settings.ThirdPersonSensitivity = New
+	end,
+	Min = 0.1,
+	Max = 5,
+	Decimals = 1
+}).Default = Aimbot.Settings.ThirdPersonSensitivity
+
+--// FOV Settings Values
+
+FOV_Values:AddToggle({
+	Name = "Enabled",
+	Value = Aimbot.FOVSettings.Enabled,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Enabled = New
+	end
+}).Default = Aimbot.FOVSettings.Enabled
+
+FOV_Values:AddToggle({
+	Name = "Visible",
+	Value = Aimbot.FOVSettings.Visible,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Visible = New
+	end
+}).Default = Aimbot.FOVSettings.Visible
+
+FOV_Values:AddSlider({
+	Name = "Amount",
+	Value = Aimbot.FOVSettings.Amount,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Amount = New
+	end,
+	Min = 10,
+	Max = 300
+}).Default = Aimbot.FOVSettings.Amount
+
+--// FOV Settings Appearance
+
+FOV_Appearance:AddToggle({
+	Name = "Filled",
+	Value = Aimbot.FOVSettings.Filled,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Filled = New
+	end
+}).Default = Aimbot.FOVSettings.Filled
+
+FOV_Appearance:AddSlider({
+	Name = "Transparency",
+	Value = Aimbot.FOVSettings.Transparency,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Transparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimal = 1
+}).Default = Aimbot.FOVSettings.Transparency
+
+FOV_Appearance:AddSlider({
+	Name = "Sides",
+	Value = Aimbot.FOVSettings.Sides,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Sides = New
+	end,
+	Min = 3,
+	Max = 60
+}).Default = Aimbot.FOVSettings.Sides
+
+FOV_Appearance:AddSlider({
+	Name = "Thickness",
+	Value = Aimbot.FOVSettings.Thickness,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Thickness = New
+	end,
+	Min = 1,
+	Max = 50
+}).Default = Aimbot.FOVSettings.Thickness
+
+FOV_Appearance:AddColorpicker({
+	Name = "Color",
+	Value = Aimbot.FOVSettings.Color,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.Color = New
+	end
+}).Default = Aimbot.FOVSettings.Color
+
+FOV_Appearance:AddColorpicker({
+	Name = "Locked Color",
+	Value = Aimbot.FOVSettings.LockedColor,
+	Callback = function(New, Old)
+		Aimbot.FOVSettings.LockedColor = New
+	end
+}).Default = Aimbot.FOVSettings.LockedColor
+
+--// Wall Hack Settings
+
+WallHackChecks:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Settings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Settings.Enabled = New
+	end
+}).Default = WallHack.Settings.Enabled
+
+WallHackChecks:AddToggle({
+	Name = "Team Check",
+	Value = WallHack.Settings.TeamCheck,
+	Callback = function(New, Old)
+		WallHack.Settings.TeamCheck = New
+	end
+}).Default = WallHack.Settings.TeamCheck
+
+WallHackChecks:AddToggle({
+	Name = "Alive Check",
+	Value = WallHack.Settings.AliveCheck,
+	Callback = function(New, Old)
+		WallHack.Settings.AliveCheck = New
+	end
+}).Default = WallHack.Settings.AliveCheck
+
+--// Visuals Settings
+
+ESPSettings:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Visuals.ESPSettings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.Enabled = New
+	end
+}).Default = WallHack.Visuals.ESPSettings.Enabled
+
+ESPSettings:AddToggle({
+	Name = "Outline",
+	Value = WallHack.Visuals.ESPSettings.Outline,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.Outline = New
+	end
+}).Default = WallHack.Visuals.ESPSettings.Outline
+
+ESPSettings:AddToggle({
+	Name = "Display Distance",
+	Value = WallHack.Visuals.ESPSettings.DisplayDistance,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.DisplayDistance = New
+	end
+}).Default = WallHack.Visuals.ESPSettings.DisplayDistance
+
+ESPSettings:AddToggle({
+	Name = "Display Health",
+	Value = WallHack.Visuals.ESPSettings.DisplayHealth,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.DisplayHealth = New
+	end
+}).Default = WallHack.Visuals.ESPSettings.DisplayHealth
+
+ESPSettings:AddToggle({
+	Name = "Display Name",
+	Value = WallHack.Visuals.ESPSettings.DisplayName,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.DisplayName = New
+	end
+}).Default = WallHack.Visuals.ESPSettings.DisplayName
+
+ESPSettings:AddSlider({
+	Name = "Offset",
+	Value = WallHack.Visuals.ESPSettings.Offset,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.Offset = New
+	end,
+	Min = -30,
+	Max = 30
+}).Default = WallHack.Visuals.ESPSettings.Offset
+
+ESPSettings:AddColorpicker({
+	Name = "Text Color",
+	Value = WallHack.Visuals.ESPSettings.TextColor,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.TextColor = New
+	end
+}).Default = WallHack.Visuals.ESPSettings.TextColor
+
+ESPSettings:AddColorpicker({
+	Name = "Outline Color",
+	Value = WallHack.Visuals.ESPSettings.OutlineColor,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.OutlineColor = New
+	end
+}).Default = WallHack.Visuals.ESPSettings.OutlineColor
+
+ESPSettings:AddSlider({
+	Name = "Text Transparency",
+	Value = WallHack.Visuals.ESPSettings.TextTransparency,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.TextTransparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Visuals.ESPSettings.TextTransparency
+
+ESPSettings:AddSlider({
+	Name = "Text Size",
+	Value = WallHack.Visuals.ESPSettings.TextSize,
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.TextSize = New
+	end,
+	Min = 8,
+	Max = 24
+}).Default = WallHack.Visuals.ESPSettings.TextSize
+
+ESPSettings:AddDropdown({
+	Name = "Text Font",
+	Value = Fonts[WallHack.Visuals.ESPSettings.TextFont + 1],
+	Callback = function(New, Old)
+		WallHack.Visuals.ESPSettings.TextFont = Drawing.Fonts[New]
+	end,
+	List = Fonts,
+	Nothing = "UI"
+}).Default = Fonts[WallHack.Visuals.ESPSettings.TextFont + 1]
+
+BoxesSettings:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Visuals.BoxSettings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Visuals.BoxSettings.Enabled = New
+	end
+}).Default = WallHack.Visuals.BoxSettings.Enabled
+
+BoxesSettings:AddSlider({
+	Name = "Transparency",
+	Value = WallHack.Visuals.BoxSettings.Transparency,
+	Callback = function(New, Old)
+		WallHack.Visuals.BoxSettings.Transparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Visuals.BoxSettings.Transparency
+
+BoxesSettings:AddSlider({
+	Name = "Thickness",
+	Value = WallHack.Visuals.BoxSettings.Thickness,
+	Callback = function(New, Old)
+		WallHack.Visuals.BoxSettings.Thickness = New
+	end,
+	Min = 1,
+	Max = 5
+}).Default = WallHack.Visuals.BoxSettings.Thickness
+
+BoxesSettings:AddSlider({
+	Name = "Scale Increase (For 3D)",
+	Value = WallHack.Visuals.BoxSettings.Increase,
+	Callback = function(New, Old)
+		WallHack.Visuals.BoxSettings.Increase = New
+	end,
+	Min = 1,
+	Max = 5
+}).Default = WallHack.Visuals.BoxSettings.Increase
+
+BoxesSettings:AddColorpicker({
+	Name = "Color",
+	Value = WallHack.Visuals.BoxSettings.Color,
+	Callback = function(New, Old)
+		WallHack.Visuals.BoxSettings.Color = New
+	end
+}).Default = WallHack.Visuals.BoxSettings.Color
+
+BoxesSettings:AddDropdown({
+	Name = "Type",
+	Value = WallHack.Visuals.BoxSettings.Type == 1 and "3D" or "2D",
+	Callback = function(New, Old)
+		WallHack.Visuals.BoxSettings.Type = New == "3D" and 1 or 2
+	end,
+	List = {"3D", "2D"},
+	Nothing = "3D"
+}).Default = WallHack.Visuals.BoxSettings.Type == 1 and "3D" or "2D"
+
+BoxesSettings:AddToggle({
+	Name = "Filled (2D Square)",
+	Value = WallHack.Visuals.BoxSettings.Filled,
+	Callback = function(New, Old)
+		WallHack.Visuals.BoxSettings.Filled = New
+	end
+}).Default = WallHack.Visuals.BoxSettings.Filled
+
+ChamsSettings:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Visuals.ChamsSettings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Visuals.ChamsSettings.Enabled = New
+	end
+}).Default = WallHack.Visuals.ChamsSettings.Enabled
+
+ChamsSettings:AddToggle({
+	Name = "Filled",
+	Value = WallHack.Visuals.ChamsSettings.Filled,
+	Callback = function(New, Old)
+		WallHack.Visuals.ChamsSettings.Filled = New
+	end
+}).Default = WallHack.Visuals.ChamsSettings.Filled
+
+ChamsSettings:AddToggle({
+	Name = "Entire Body (For R15 Rigs)",
+	Value = WallHack.Visuals.ChamsSettings.EntireBody,
+	Callback = function(New, Old)
+		WallHack.Visuals.ChamsSettings.EntireBody = New
+	end
+}).Default = WallHack.Visuals.ChamsSettings.EntireBody
+
+ChamsSettings:AddSlider({
+	Name = "Transparency",
+	Value = WallHack.Visuals.ChamsSettings.Transparency,
+	Callback = function(New, Old)
+		WallHack.Visuals.ChamsSettings.Transparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Visuals.ChamsSettings.Transparency
+
+ChamsSettings:AddSlider({
+	Name = "Thickness",
+	Value = WallHack.Visuals.ChamsSettings.Thickness,
+	Callback = function(New, Old)
+		WallHack.Visuals.ChamsSettings.Thickness = New
+	end,
+	Min = 0,
+	Max = 3
+}).Default = WallHack.Visuals.ChamsSettings.Thickness
+
+ChamsSettings:AddColorpicker({
+	Name = "Color",
+	Value = WallHack.Visuals.ChamsSettings.Color,
+	Callback = function(New, Old)
+		WallHack.Visuals.ChamsSettings.Color = New
+	end
+}).Default = WallHack.Visuals.ChamsSettings.Color
+
+TracersSettings:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Visuals.TracersSettings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Visuals.TracersSettings.Enabled = New
+	end
+}).Default = WallHack.Visuals.TracersSettings.Enabled
+
+TracersSettings:AddSlider({
+	Name = "Transparency",
+	Value = WallHack.Visuals.TracersSettings.Transparency,
+	Callback = function(New, Old)
+		WallHack.Visuals.TracersSettings.Transparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Visuals.TracersSettings.Transparency
+
+TracersSettings:AddSlider({
+	Name = "Thickness",
+	Value = WallHack.Visuals.TracersSettings.Thickness,
+	Callback = function(New, Old)
+		WallHack.Visuals.TracersSettings.Thickness = New
+	end,
+	Min = 1,
+	Max = 5
+}).Default = WallHack.Visuals.TracersSettings.Thickness
+
+TracersSettings:AddColorpicker({
+	Name = "Color",
+	Value = WallHack.Visuals.TracersSettings.Color,
+	Callback = function(New, Old)
+		WallHack.Visuals.TracersSettings.Color = New
+	end
+}).Default = WallHack.Visuals.TracersSettings.Color
+
+TracersSettings:AddDropdown({
+	Name = "Start From",
+	Value = TracersType[WallHack.Visuals.TracersSettings.Type],
+	Callback = function(New, Old)
+		WallHack.Visuals.TracersSettings.Type = tablefind(TracersType, New)
+	end,
+	List = TracersType,
+	Nothing = "Bottom"
+}).Default = Fonts[WallHack.Visuals.TracersSettings.Type + 1]
+
+HeadDotsSettings:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Visuals.HeadDotSettings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Visuals.HeadDotSettings.Enabled = New
+	end
+}).Default = WallHack.Visuals.HeadDotSettings.Enabled
+
+HeadDotsSettings:AddToggle({
+	Name = "Filled",
+	Value = WallHack.Visuals.HeadDotSettings.Filled,
+	Callback = function(New, Old)
+		WallHack.Visuals.HeadDotSettings.Filled = New
+	end
+}).Default = WallHack.Visuals.HeadDotSettings.Filled
+
+HeadDotsSettings:AddSlider({
+	Name = "Transparency",
+	Value = WallHack.Visuals.HeadDotSettings.Transparency,
+	Callback = function(New, Old)
+		WallHack.Visuals.HeadDotSettings.Transparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Visuals.HeadDotSettings.Transparency
+
+HeadDotsSettings:AddSlider({
+	Name = "Thickness",
+	Value = WallHack.Visuals.HeadDotSettings.Thickness,
+	Callback = function(New, Old)
+		WallHack.Visuals.HeadDotSettings.Thickness = New
+	end,
+	Min = 1,
+	Max = 5
+}).Default = WallHack.Visuals.HeadDotSettings.Thickness
+
+HeadDotsSettings:AddSlider({
+	Name = "Sides",
+	Value = WallHack.Visuals.HeadDotSettings.Sides,
+	Callback = function(New, Old)
+		WallHack.Visuals.HeadDotSettings.Sides = New
+	end,
+	Min = 3,
+	Max = 60
+}).Default = WallHack.Visuals.HeadDotSettings.Sides
+
+HeadDotsSettings:AddColorpicker({
+	Name = "Color",
+	Value = WallHack.Visuals.HeadDotSettings.Color,
+	Callback = function(New, Old)
+		WallHack.Visuals.HeadDotSettings.Color = New
+	end
+}).Default = WallHack.Visuals.HeadDotSettings.Color
+
+HealthBarSettings:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Visuals.HealthBarSettings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Visuals.HealthBarSettings.Enabled = New
+	end
+}).Default = WallHack.Visuals.HealthBarSettings.Enabled
+
+HealthBarSettings:AddDropdown({
+	Name = "Position",
+	Value = WallHack.Visuals.HealthBarSettings.Type == 1 and "Top" or WallHack.Visuals.HealthBarSettings.Type == 2 and "Bottom" or WallHack.Visuals.HealthBarSettings.Type == 3 and "Left" or "Right",
+	Callback = function(New, Old)
+		WallHack.Visuals.HealthBarSettings.Type = New == "Top" and 1 or New == "Bottom" and 2 or New == "Left" and 3 or 4
+	end,
+	List = {"Top", "Bottom", "Left", "Right"},
+	Nothing = "Left"
+}).Default = WallHack.Visuals.HealthBarSettings.Type == 1 and "Top" or WallHack.Visuals.HealthBarSettings.Type == 2 and "Bottom" or WallHack.Visuals.HealthBarSettings.Type == 3 and "Left" or "Right"
+
+HealthBarSettings:AddSlider({
+	Name = "Transparency",
+	Value = WallHack.Visuals.HealthBarSettings.Transparency,
+	Callback = function(New, Old)
+		WallHack.Visuals.HealthBarSettings.Transparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Visuals.HealthBarSettings.Transparency
+
+HealthBarSettings:AddSlider({
+	Name = "Size",
+	Value = WallHack.Visuals.HealthBarSettings.Size,
+	Callback = function(New, Old)
+		WallHack.Visuals.HealthBarSettings.Size = New
+	end,
+	Min = 2,
+	Max = 10
+}).Default = WallHack.Visuals.HealthBarSettings.Size
+
+HealthBarSettings:AddSlider({
+	Name = "Blue",
+	Value = WallHack.Visuals.HealthBarSettings.Blue,
+	Callback = function(New, Old)
+		WallHack.Visuals.HealthBarSettings.Blue = New
+	end,
+	Min = 0,
+	Max = 255
+}).Default = WallHack.Visuals.HealthBarSettings.Blue
+
+HealthBarSettings:AddSlider({
+	Name = "Offset",
+	Value = WallHack.Visuals.HealthBarSettings.Offset,
+	Callback = function(New, Old)
+		WallHack.Visuals.HealthBarSettings.Offset = New
+	end,
+	Min = -30,
+	Max = 30
+}).Default = WallHack.Visuals.HealthBarSettings.Offset
+
+HealthBarSettings:AddColorpicker({
+	Name = "Outline Color",
+	Value = WallHack.Visuals.HealthBarSettings.OutlineColor,
+	Callback = function(New, Old)
+		WallHack.Visuals.HealthBarSettings.OutlineColor = New
+	end
+}).Default = WallHack.Visuals.HealthBarSettings.OutlineColor
+
+--// Crosshair Settings
+
+CrosshairSettings:AddToggle({
+	Name = "Mouse Cursor",
+	Value = UserInputService.MouseIconEnabled,
+	Callback = function(New, Old)
+		UserInputService.MouseIconEnabled = New
+	end
+}).Default = UserInputService.MouseIconEnabled
+
+CrosshairSettings:AddToggle({
+	Name = "Enabled",
+	Value = WallHack.Crosshair.Settings.Enabled,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.Enabled = New
+	end
+}).Default = WallHack.Crosshair.Settings.Enabled
+
+CrosshairSettings:AddColorpicker({
+	Name = "Color",
+	Value = WallHack.Crosshair.Settings.Color,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.Color = New
+	end
+}).Default = WallHack.Crosshair.Settings.Color
+
+CrosshairSettings:AddSlider({
+	Name = "Transparency",
+	Value = WallHack.Crosshair.Settings.Transparency,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.Transparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Crosshair.Settings.Transparency
+
+CrosshairSettings:AddSlider({
+	Name = "Size",
+	Value = WallHack.Crosshair.Settings.Size,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.Size = New
+	end,
+	Min = 8,
+	Max = 24
+}).Default = WallHack.Crosshair.Settings.Size
+
+CrosshairSettings:AddSlider({
+	Name = "Thickness",
+	Value = WallHack.Crosshair.Settings.Thickness,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.Thickness = New
+	end,
+	Min = 1,
+	Max = 5
+}).Default = WallHack.Crosshair.Settings.Thickness
+
+CrosshairSettings:AddSlider({
+	Name = "Gap Size",
+	Value = WallHack.Crosshair.Settings.GapSize,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.GapSize = New
+	end,
+	Min = 0,
+	Max = 20
+}).Default = WallHack.Crosshair.Settings.GapSize
+
+CrosshairSettings:AddSlider({
+	Name = "Rotation (Degrees)",
+	Value = WallHack.Crosshair.Settings.Rotation,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.Rotation = New
+	end,
+	Min = -180,
+	Max = 180
+}).Default = WallHack.Crosshair.Settings.Rotation
+
+CrosshairSettings:AddDropdown({
+	Name = "Position",
+	Value = WallHack.Crosshair.Settings.Type == 1 and "Mouse" or "Center",
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.Type = New == "Mouse" and 1 or 2
+	end,
+	List = {"Mouse", "Center"},
+	Nothing = "Mouse"
+}).Default = WallHack.Crosshair.Settings.Type == 1 and "Mouse" or "Center"
+
+CrosshairSettings_CenterDot:AddToggle({
+	Name = "Center Dot",
+	Value = WallHack.Crosshair.Settings.CenterDot,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.CenterDot = New
+	end
+}).Default = WallHack.Crosshair.Settings.CenterDot
+
+CrosshairSettings_CenterDot:AddColorpicker({
+	Name = "Center Dot Color",
+	Value = WallHack.Crosshair.Settings.CenterDotColor,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.CenterDotColor = New
+	end
+}).Default = WallHack.Crosshair.Settings.CenterDotColor
+
+CrosshairSettings_CenterDot:AddSlider({
+	Name = "Center Dot Size",
+	Value = WallHack.Crosshair.Settings.CenterDotSize,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.CenterDotSize = New
+	end,
+	Min = 1,
+	Max = 6
+}).Default = WallHack.Crosshair.Settings.CenterDotSize
+
+CrosshairSettings_CenterDot:AddSlider({
+	Name = "Center Dot Transparency",
+	Value = WallHack.Crosshair.Settings.CenterDotTransparency,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.CenterDotTransparency = New
+	end,
+	Min = 0,
+	Max = 1,
+	Decimals = 2
+}).Default = WallHack.Crosshair.Settings.CenterDotTransparency
+
+CrosshairSettings_CenterDot:AddToggle({
+	Name = "Center Dot Filled",
+	Value = WallHack.Crosshair.Settings.CenterDotFilled,
+	Callback = function(New, Old)
+		WallHack.Crosshair.Settings.CenterDotFilled = New
+	end
+}).Default = WallHack.Crosshair.Settings.CenterDotFilled
+
+--// Functions / Functions
+
+FunctionsSection:AddButton({
+	Name = "Reset Settings",
+	Callback = function()
+		Aimbot.Functions:ResetSettings()
+		WallHack.Functions:ResetSettings()
+		Library.ResetAll()
+	end
+})
+
+FunctionsSection:AddButton({
+	Name = "Restart",
+	Callback = function()
+		Aimbot.Functions:Restart()
+		WallHack.Functions:Restart()
+	end
+})
+
+FunctionsSection:AddButton({
+	Name = "Exit",
+	Callback = Library.Unload,
+})
+
+FunctionsSection:AddButton({
+	Name = "Copy Script Page",
+	Callback = function()
+		setclipboard("https://github.com/Exunys/AirHub")
+	end
+})
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Fly",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Infinite Jump",
+   Callback = function()
+local ScreenGui = Instance.new("ScreenGui")
+local main = Instance.new("Frame")
+local TextLabel = Instance.new("TextLabel")
+local Frame = Instance.new("Frame")
+local INFJUMP = Instance.new("TextButton")
+local TextLabel_2 = Instance.new("TextLabel")
+
+--Properties:
+
+ScreenGui.Parent = game.CoreGui
+
+main.Name = "main"
+main.Parent = ScreenGui
+main.Active = true
+main.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+main.BorderSizePixel = 0
+main.Position = UDim2.new(0.119258665, 0, 0, 0)
+main.Size = UDim2.new(0, 146, 0, 28)
+main.Active = true
+main.Draggable = false
+
+TextLabel.Parent = main
+TextLabel.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+TextLabel.BorderSizePixel = 0
+TextLabel.Size = UDim2.new(0, 146, 0, 28)
+TextLabel.Font = Enum.Font.SciFi
+TextLabel.Text = "Misc"
+TextLabel.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel.TextSize = 17.000
+TextLabel.TextWrapped = true
+
+Frame.Parent = main
+Frame.BackgroundColor3 = Color3.fromRGB(86, 86, 86)
+Frame.BorderSizePixel = 0
+Frame.Position = UDim2.new(0, 0, 1, 0)
+Frame.Size = UDim2.new(0, 146, 0, 61)
+
+INFJUMP.Name = "INFJUMP"
+INFJUMP.Parent = main
+INFJUMP.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+INFJUMP.BorderSizePixel = 0
+INFJUMP.Position = UDim2.new(0.794520497, 0, 1.6785717, 0)
+INFJUMP.Size = UDim2.new(0, 21, 0, 21)
+INFJUMP.Font = Enum.Font.SourceSans
+INFJUMP.Text = ""
+INFJUMP.TextColor3 = Color3.fromRGB(0, 0, 0)
+INFJUMP.TextSize = 14.000
+INFJUMP.MouseButton1Down:connect(function()
+local Player = game:GetService'Players'.LocalPlayer;
+local UIS = game:GetService'UserInputService';
+ 
+_G.JumpHeight = 50;
+ 
+function Action(Object, Function) if Object ~= nil then Function(Object); end end
+ 
+UIS.InputBegan:connect(function(UserInput)
+    if UserInput.UserInputType == Enum.UserInputType.Keyboard and UserInput.KeyCode == Enum.KeyCode.Space then
+        Action(Player.Character.Humanoid, function(self)
+            if self:GetState() == Enum.HumanoidStateType.Jumping or self:GetState() == Enum.HumanoidStateType.Freefall then
+                Action(self.Parent.HumanoidRootPart, function(self)
+                    self.Velocity = Vector3.new(0, _G.JumpHeight, 0);
+                end)
+            end
+        end)
+    end
+end)
+end)
+
+TextLabel_2.Parent = main
+TextLabel_2.BackgroundColor3 = Color3.fromRGB(38, 38, 38)
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0.0547945201, 0, 1.57142854, 0)
+TextLabel_2.Size = UDim2.new(0, 94, 0, 28)
+TextLabel_2.Font = Enum.Font.SciFi
+TextLabel_2.Text = "Inf jump"
+TextLabel_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+TextLabel_2.TextSize = 17.000
+TextLabel_2.TextWrapped = true
+
+-- Scripts:
+
+local function TKDWQ_fake_script() -- INFJUMP.LocalScript 
+local script = Instance.new('LocalScript', INFJUMP)
+
+function zigzag(X) return math.acos(math.cos(X*math.pi))/math.pi end
+
+counter = 0
+
+while wait(0.1)do
+script.Parent.BackgroundColor3 = Color3.fromHSV(zigzag(counter),1,1)
+ 
+counter = counter + 0.01
+end
+end
+coroutine.wrap(TKDWQ_fake_script)()
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Chat Bypasser",
+   Callback = function()
+ _G.Keybind = 'Q' -- This is usually defaulted to Q. However, you can change to whatever you want.
+_G.Method = 1 -- 1 for the new method, 2 for the emoji method. If not defined, it will be defaulted to 1.
+loadstring(game:HttpGet("https://raw.githubusercontent.com/synnyyy/synergy/additional/betterbypasser",true))()
+   end,
+})
+        
+local Slider = MainTab:CreateSlider({
+   Name = "Walkspeed",
+   Range = {0, 255},
+   Increment = 1,
+   Suffix = "Speed",
+   CurrentValue = 16,
+   Flag = "Slider1", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = (Value)
+   end,
+})
+
+local Slider = MainTab:CreateSlider({
+   Name = "JumpPower",
+   Range = {0, 255},
+   Increment = 1,
+   Suffix = "Jump",
+   CurrentValue = 100,
+   Flag = "Slider2", -- A flag is the identifier for the configuration file, make sure every element has a different flag if you're using configuration saving to ensure no overlaps
+   Callback = function(Value)
+        game.Players.LocalPlayer.Character.Humanoid.JumpPower = (Value)
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Fake Animation (IT MAY CLOSE THE GUI)",
+   Callback = function()
+local AnimationChanger = Instance.new("ScreenGui")
+local Main = Instance.new("Frame")
+local TopBar = Instance.new("Frame")
+local Close = Instance.new("TextButton")
+local TextLabel = Instance.new("TextLabel")
+local TextLabel_2 = Instance.new("TextLabel")
+local NormalTab = Instance.new("Frame")
+local A_Astronaut = Instance.new("TextButton")
+local A_Bubbly = Instance.new("TextButton")
+local A_Cartoony = Instance.new("TextButton")
+local A_Elder = Instance.new("TextButton")
+local A_Knight = Instance.new("TextButton")
+local A_Levitation = Instance.new("TextButton")
+local A_Mage = Instance.new("TextButton")
+local A_Ninja = Instance.new("TextButton")
+local A_Pirate = Instance.new("TextButton")
+local A_Robot = Instance.new("TextButton")
+local A_Stylish = Instance.new("TextButton")
+local A_SuperHero = Instance.new("TextButton")
+local A_Toy = Instance.new("TextButton")
+local A_Vampire = Instance.new("TextButton")
+local A_Werewolf = Instance.new("TextButton")
+local A_Zombie = Instance.new("TextButton")
+local Category = Instance.new("TextLabel")
+local SpecialTab = Instance.new("Frame")
+local A_Patrol = Instance.new("TextButton")
+local A_Confident = Instance.new("TextButton")
+local A_Popstar = Instance.new("TextButton")
+local A_Cowboy = Instance.new("TextButton")
+local A_Ghost = Instance.new("TextButton")
+local A_Sneaky = Instance.new("TextButton")
+local A_Princess = Instance.new("TextButton")
+local Category_2 = Instance.new("TextLabel")
+local OtherTab = Instance.new("Frame")
+local Category_3 = Instance.new("TextLabel")
+local A_None = Instance.new("TextButton")
+local A_Anthro = Instance.new("TextButton")
+local Animate = game.Players.LocalPlayer.Character.Animate
+
+AnimationChanger.Name = "AnimationChanger"
+AnimationChanger.Parent = game:WaitForChild("CoreGui")
+AnimationChanger.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+
+Main.Name = "Main"
+Main.Parent = AnimationChanger
+Main.BackgroundColor3 = Color3.new(0.278431, 0.278431, 0.278431)
+Main.BorderSizePixel = 0
+Main.Position = UDim2.new(0.421999991, 0, -1, 0)
+Main.Size = UDim2.new(0, 300, 0, 250)
+Main.Active = true
+Main.Draggable = true
+
+TopBar.Name = "TopBar"
+TopBar.Parent = Main
+TopBar.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+TopBar.BorderSizePixel = 0
+TopBar.Size = UDim2.new(0, 300, 0, 30)
+
+Close.Name = "Close"
+Close.Parent = TopBar
+Close.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+Close.BorderSizePixel = 0
+Close.Position = UDim2.new(0.899999976, 0, 0, 0)
+Close.Size = UDim2.new(0, 30, 0, 30)
+Close.Font = Enum.Font.SciFi
+Close.Text = "x"
+Close.TextColor3 = Color3.new(1, 0, 0.0156863)
+Close.TextSize = 20
+Close.MouseButton1Click:Connect(function()
+    wait(0.3)
+    Main:TweenPosition(UDim2.new(0.421999991, 0, -1.28400004, 0))
+    wait(3)
+    AnimationChanger:Destroy()
+end)
+
+TextLabel.Parent = TopBar
+TextLabel.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel.BackgroundTransparency = 1
+TextLabel.BorderSizePixel = 0
+TextLabel.Position = UDim2.new(0, 0, 0.600000024, 0)
+TextLabel.Size = UDim2.new(0, 270, 0, 10)
+TextLabel.Font = Enum.Font.SourceSans
+TextLabel.Text = "Made by Nyser#4623"
+TextLabel.TextColor3 = Color3.new(1, 1, 1)
+TextLabel.TextSize = 15
+
+TextLabel_2.Parent = TopBar
+TextLabel_2.BackgroundColor3 = Color3.new(1, 1, 1)
+TextLabel_2.BackgroundTransparency = 1
+TextLabel_2.BorderSizePixel = 0
+TextLabel_2.Position = UDim2.new(0, 0, -0.0266667679, 0)
+TextLabel_2.Size = UDim2.new(0, 270, 0, 20)
+TextLabel_2.Font = Enum.Font.SourceSans
+TextLabel_2.Text = "Animation Changer"
+TextLabel_2.TextColor3 = Color3.new(1, 1, 1)
+TextLabel_2.TextSize = 20
+
+NormalTab.Name = "NormalTab"
+NormalTab.Parent = Main
+NormalTab.BackgroundColor3 = Color3.new(0.278431, 0.278431, 0.278431)
+NormalTab.BackgroundTransparency = 1
+NormalTab.BorderSizePixel = 0
+NormalTab.Position = UDim2.new(0.5, 0, 0.119999997, 0)
+NormalTab.Size = UDim2.new(0, 150, 0, 500)
+
+A_Astronaut.Name = "A_Astronaut"
+A_Astronaut.Parent = NormalTab
+A_Astronaut.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Astronaut.BorderSizePixel = 0
+A_Astronaut.Position = UDim2.new(0, 0, 0.815764725, 0)
+A_Astronaut.Size = UDim2.new(0, 150, 0, 30)
+A_Astronaut.Font = Enum.Font.SciFi
+A_Astronaut.Text = "Astronaut"
+A_Astronaut.TextColor3 = Color3.new(1, 1, 1)
+A_Astronaut.TextSize = 20
+A_Astronaut.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=891621366"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=891633237"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=891667138"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=891636393"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=891627522"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=891609353"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=891617961"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Bubbly.Name = "A_Bubbly"
+A_Bubbly.Parent = NormalTab
+A_Bubbly.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Bubbly.BorderSizePixel = 0
+A_Bubbly.Position = UDim2.new(0, 0, 0.349019617, 0)
+A_Bubbly.Size = UDim2.new(0, 150, 0, 30)
+A_Bubbly.Font = Enum.Font.SciFi
+A_Bubbly.Text = "Bubbly"
+A_Bubbly.TextColor3 = Color3.new(1, 1, 1)
+A_Bubbly.TextSize = 20
+A_Bubbly.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=910004836"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=910009958"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=910034870"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=910025107"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=910016857"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=910001910"
+Animate.swimidle.SwimIdle.AnimationId = "http://www.roblox.com/asset/?id=910030921"
+Animate.swim.Swim.AnimationId = "http://www.roblox.com/asset/?id=910028158"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Cartoony.Name = "A_Cartoony"
+A_Cartoony.Parent = NormalTab
+A_Cartoony.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Cartoony.BorderSizePixel = 0
+A_Cartoony.Position = UDim2.new(0, 0, 0.407272667, 0)
+A_Cartoony.Size = UDim2.new(0, 150, 0, 30)
+A_Cartoony.Font = Enum.Font.SciFi
+A_Cartoony.Text = "Cartoony"
+A_Cartoony.TextColor3 = Color3.new(1, 1, 1)
+A_Cartoony.TextSize = 20
+A_Cartoony.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=742637544"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=742638445"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=742640026"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=742638842"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=742637942"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=742636889"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=742637151"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Elder.Name = "A_Elder"
+A_Elder.Parent = NormalTab
+A_Elder.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Elder.BorderSizePixel = 0
+A_Elder.Position = UDim2.new(6.51925802e-09, 0, 0.636310041, 0)
+A_Elder.Size = UDim2.new(0, 150, 0, 30)
+A_Elder.Font = Enum.Font.SciFi
+A_Elder.Text = "Elder"
+A_Elder.TextColor3 = Color3.new(1, 1, 1)
+A_Elder.TextSize = 20
+A_Elder.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=845397899"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=845400520"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=845403856"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=845386501"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=845398858"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=845392038"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=845396048"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Knight.Name = "A_Knight"
+A_Knight.Parent = NormalTab
+A_Knight.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Knight.BorderSizePixel = 0
+A_Knight.Position = UDim2.new(0, 0, 0.52352941, 0)
+A_Knight.Size = UDim2.new(0, 150, 0, 30)
+A_Knight.Font = Enum.Font.SciFi
+A_Knight.Text = "Knight"
+A_Knight.TextColor3 = Color3.new(1, 1, 1)
+A_Knight.TextSize = 20
+A_Knight.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=657595757"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=657568135"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=657552124"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=657564596"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=658409194"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=658360781"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=657600338"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Levitation.Name = "A_Levitation"
+A_Levitation.Parent = NormalTab
+A_Levitation.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Levitation.BorderSizePixel = 0
+A_Levitation.Position = UDim2.new(0, 0, 0.115472436, 0)
+A_Levitation.Size = UDim2.new(0, 150, 0, 30)
+A_Levitation.Font = Enum.Font.SciFi
+A_Levitation.Text = "Levitation"
+A_Levitation.TextColor3 = Color3.new(1, 1, 1)
+A_Levitation.TextSize = 20
+A_Levitation.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616006778"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616008087"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616013216"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616010382"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616008936"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616003713"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616005863"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Mage.Name = "A_Mage"
+A_Mage.Parent = NormalTab
+A_Mage.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Mage.BorderSizePixel = 0
+A_Mage.Position = UDim2.new(0, 0, 0.696203232, 0)
+A_Mage.Size = UDim2.new(0, 150, 0, 30)
+A_Mage.Font = Enum.Font.SciFi
+A_Mage.Text = "Mage"
+A_Mage.TextColor3 = Color3.new(1, 1, 1)
+A_Mage.TextSize = 20
+A_Mage.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=707742142"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=707855907"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=707897309"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=707861613"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=707853694"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=707826056"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=707829716"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Ninja.Name = "A_Ninja"
+A_Ninja.Parent = NormalTab
+A_Ninja.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Ninja.BorderSizePixel = 0
+A_Ninja.Position = UDim2.new(0, 0, 0.0597896464, 0)
+A_Ninja.Size = UDim2.new(0, 150, 0, 30)
+A_Ninja.Font = Enum.Font.SciFi
+A_Ninja.Text = "Ninja"
+A_Ninja.TextColor3 = Color3.new(1, 1, 1)
+A_Ninja.TextSize = 20
+A_Ninja.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=656117400"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=656118341"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=656121766"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=656118852"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=656117878"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=656114359"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=656115606"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Pirate.Name = "A_Pirate"
+A_Pirate.Parent = NormalTab
+A_Pirate.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Pirate.BorderSizePixel = 0
+A_Pirate.Position = UDim2.new(-0.000333309174, 0, 0.874588311, 0)
+A_Pirate.Size = UDim2.new(0, 150, 0, 30)
+A_Pirate.Font = Enum.Font.SciFi
+A_Pirate.Text = "Pirate"
+A_Pirate.TextColor3 = Color3.new(1, 1, 1)
+A_Pirate.TextSize = 20
+A_Pirate.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=750781874"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=750782770"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=750785693"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=750783738"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=750782230"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=750779899"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=750780242"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Robot.Name = "A_Robot"
+A_Robot.Parent = NormalTab
+A_Robot.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Robot.BorderSizePixel = 0
+A_Robot.Position = UDim2.new(0, 0, 0.291479498, 0)
+A_Robot.Size = UDim2.new(0, 150, 0, 30)
+A_Robot.Font = Enum.Font.SciFi
+A_Robot.Text = "Robot"
+A_Robot.TextColor3 = Color3.new(1, 1, 1)
+A_Robot.TextSize = 20
+A_Robot.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616088211"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616089559"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616095330"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616091570"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616090535"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616086039"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616087089"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Stylish.Name = "A_Stylish"
+A_Stylish.Parent = NormalTab
+A_Stylish.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Stylish.BorderSizePixel = 0
+A_Stylish.Position = UDim2.new(0, 0, 0.232816339, 0)
+A_Stylish.Size = UDim2.new(0, 150, 0, 30)
+A_Stylish.Font = Enum.Font.SciFi
+A_Stylish.Text = "Stylish"
+A_Stylish.TextColor3 = Color3.new(1, 1, 1)
+A_Stylish.TextSize = 20
+A_Stylish.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616136790"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616138447"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616146177"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616140816"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616139451"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616133594"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616134815"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_SuperHero.Name = "A_SuperHero"
+A_SuperHero.Parent = NormalTab
+A_SuperHero.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_SuperHero.BorderSizePixel = 0
+A_SuperHero.Position = UDim2.new(0, 0, 0.464919746, 0)
+A_SuperHero.Size = UDim2.new(0, 150, 0, 30)
+A_SuperHero.Font = Enum.Font.SciFi
+A_SuperHero.Text = "SuperHero"
+A_SuperHero.TextColor3 = Color3.new(1, 1, 1)
+A_SuperHero.TextSize = 20
+A_SuperHero.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616111295"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616113536"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616122287"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616117076"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616115533"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616104706"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616108001"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Toy.Name = "A_Toy"
+A_Toy.Parent = NormalTab
+A_Toy.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Toy.BorderSizePixel = 0
+A_Toy.Position = UDim2.new(6.51925802e-09, 0, 0.756028414, 0)
+A_Toy.Size = UDim2.new(0, 150, 0, 30)
+A_Toy.Font = Enum.Font.SciFi
+A_Toy.Text = "Toy"
+A_Toy.TextColor3 = Color3.new(1, 1, 1)
+A_Toy.TextSize = 20
+A_Toy.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=782841498"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=782845736"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=782843345"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=782842708"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=782847020"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=782843869"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=782846423"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Vampire.Name = "A_Vampire"
+A_Vampire.Parent = NormalTab
+A_Vampire.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Vampire.BorderSizePixel = 0
+A_Vampire.Position = UDim2.new(0, 0, 0.934021354, 0)
+A_Vampire.Size = UDim2.new(0, 150, 0, 30)
+A_Vampire.Font = Enum.Font.SciFi
+A_Vampire.Text = "Vampire"
+A_Vampire.TextColor3 = Color3.new(1, 1, 1)
+A_Vampire.TextSize = 20
+A_Vampire.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1083445855"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1083450166"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1083473930"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1083462077"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083455352"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1083439238"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1083443587"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Werewolf.Name = "A_Werewolf"
+A_Werewolf.Parent = NormalTab
+A_Werewolf.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Werewolf.BorderSizePixel = 0
+A_Werewolf.Position = UDim2.new(-0.000333368778, 0, 0.174509808, 0)
+A_Werewolf.Size = UDim2.new(0, 150, 0, 30)
+A_Werewolf.Font = Enum.Font.SciFi
+A_Werewolf.Text = "Werewolf"
+A_Werewolf.TextColor3 = Color3.new(1, 1, 1)
+A_Werewolf.TextSize = 20
+A_Werewolf.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1083195517"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1083214717"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1083178339"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1083216690"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1083218792"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1083182000"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1083189019"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Zombie.Name = "A_Zombie"
+A_Zombie.Parent = NormalTab
+A_Zombie.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Zombie.BorderSizePixel = 0
+A_Zombie.Position = UDim2.new(-1.1920929e-07, 0, 0.582352936, 0)
+A_Zombie.Size = UDim2.new(0, 150, 0, 30)
+A_Zombie.Font = Enum.Font.SciFi
+A_Zombie.Text = "Zombie"
+A_Zombie.TextColor3 = Color3.new(1, 1, 1)
+A_Zombie.TextSize = 20
+A_Zombie.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616158929"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616160636"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616168032"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616161997"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=616156119"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616157476"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+Category.Name = "Category"
+Category.Parent = NormalTab
+Category.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+Category.BorderSizePixel = 0
+Category.Size = UDim2.new(0, 150, 0, 30)
+Category.Text = "Normal"
+Category.TextColor3 = Color3.new(0, 0.835294, 1)
+Category.TextSize = 14
+
+SpecialTab.Name = "SpecialTab"
+SpecialTab.Parent = Main
+SpecialTab.BackgroundColor3 = Color3.new(0.278431, 0.278431, 0.278431)
+SpecialTab.BackgroundTransparency = 1
+SpecialTab.BorderSizePixel = 0
+SpecialTab.Position = UDim2.new(0, 0, 0.119999997, 0)
+SpecialTab.Size = UDim2.new(0, 150, 0, 230)
+
+A_Patrol.Name = "A_Patrol"
+A_Patrol.Parent = SpecialTab
+A_Patrol.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Patrol.BorderSizePixel = 0
+A_Patrol.Position = UDim2.new(0, 0, 0.259960413, 0)
+A_Patrol.Size = UDim2.new(0, 150, 0, 30)
+A_Patrol.Font = Enum.Font.SciFi
+A_Patrol.Text = "Patrol"
+A_Patrol.TextColor3 = Color3.new(1, 1, 1)
+A_Patrol.TextSize = 20
+A_Patrol.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1149612882"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1150842221"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1151231493"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1150967949"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1148811837"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1148811837"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1148863382"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Confident.Name = "A_Confident"
+A_Confident.Parent = SpecialTab
+A_Confident.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Confident.BorderSizePixel = 0
+A_Confident.Position = UDim2.new(0, 0, 0.389248967, 0)
+A_Confident.Size = UDim2.new(0, 150, 0, 30)
+A_Confident.Font = Enum.Font.SciFi
+A_Confident.Text = "Confident"
+A_Confident.TextColor3 = Color3.new(1, 1, 1)
+A_Confident.TextSize = 20
+A_Confident.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1069977950"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1069987858"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1070017263"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1070001516"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1069984524"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1069946257"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1069973677"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Popstar.Name = "A_Popstar"
+A_Popstar.Parent = SpecialTab
+A_Popstar.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Popstar.BorderSizePixel = 0
+A_Popstar.Position = UDim2.new(0, 0, 0.130671918, 0)
+A_Popstar.Size = UDim2.new(0, 150, 0, 30)
+A_Popstar.Font = Enum.Font.SciFi
+A_Popstar.Text = "Popstar"
+A_Popstar.TextColor3 = Color3.new(1, 1, 1)
+A_Popstar.TextSize = 20
+A_Popstar.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1212900985"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1150842221"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1212980338"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1212980348"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1212954642"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1213044953"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1212900995"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Cowboy.Name = "A_Cowboy"
+A_Cowboy.Parent = SpecialTab
+A_Cowboy.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Cowboy.BorderSizePixel = 0
+A_Cowboy.Position = UDim2.new(0, 0, 0.772964239, 0)
+A_Cowboy.Size = UDim2.new(0, 150, 0, 30)
+A_Cowboy.Font = Enum.Font.SciFi
+A_Cowboy.Text = "Cowboy"
+A_Cowboy.TextColor3 = Color3.new(1, 1, 1)
+A_Cowboy.TextSize = 20
+A_Cowboy.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1014390418"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1014398616"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1014421541"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1014401683"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1014394726"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1014380606"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1014384571"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Ghost.Name = "A_Ghost"
+A_Ghost.Parent = SpecialTab
+A_Ghost.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Ghost.BorderSizePixel = 0
+A_Ghost.Position = UDim2.new(0, 0, 0.900632322, 0)
+A_Ghost.Size = UDim2.new(0, 150, 0, 30)
+A_Ghost.Font = Enum.Font.SciFi
+A_Ghost.Text = "Ghost"
+A_Ghost.TextColor3 = Color3.new(1, 1, 1)
+A_Ghost.TextSize = 20
+A_Ghost.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=616006778"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=616008087"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=616013216"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616013216"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=616008936"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=616005863"
+Animate.swimidle.SwimIdle.AnimationId = "http://www.roblox.com/asset/?id=616012453"
+Animate.swim.Swim.AnimationId = "http://www.roblox.com/asset/?id=616011509"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Sneaky.Name = "A_Sneaky"
+A_Sneaky.Parent = SpecialTab
+A_Sneaky.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Sneaky.BorderSizePixel = 0
+A_Sneaky.Position = UDim2.new(0, 0, 0.517628431, 0)
+A_Sneaky.Size = UDim2.new(0, 150, 0, 30)
+A_Sneaky.Font = Enum.Font.SciFi
+A_Sneaky.Text = "Sneaky"
+A_Sneaky.TextColor3 = Color3.new(1, 1, 1)
+A_Sneaky.TextSize = 20
+A_Sneaky.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=1132473842"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=1132477671"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=1132510133"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=1132494274"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=1132489853"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=1132461372"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=1132469004"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Princess.Name = "A_Princess"
+A_Princess.Parent = SpecialTab
+A_Princess.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Princess.BorderSizePixel = 0
+A_Princess.Position = UDim2.new(0, 0, 0.645296335, 0)
+A_Princess.Size = UDim2.new(0, 150, 0, 30)
+A_Princess.Font = Enum.Font.SciFi
+A_Princess.Text = "Princess"
+A_Princess.TextColor3 = Color3.new(1, 1, 1)
+A_Princess.TextSize = 20
+A_Princess.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=941003647"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=941013098"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=941028902"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=941015281"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=941008832"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=940996062"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=941000007"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+Category_2.Name = "Category"
+Category_2.Parent = SpecialTab
+Category_2.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+Category_2.BorderSizePixel = 0
+Category_2.Size = UDim2.new(0, 150, 0, 30)
+Category_2.Text = "Special"
+Category_2.TextColor3 = Color3.new(0, 0.835294, 1)
+Category_2.TextSize = 14
+
+OtherTab.Name = "OtherTab"
+OtherTab.Parent = Main
+OtherTab.BackgroundColor3 = Color3.new(0.278431, 0.278431, 0.278431)
+OtherTab.BackgroundTransparency = 1
+OtherTab.BorderSizePixel = 0
+OtherTab.Position = UDim2.new(0, 0, 1.06800008, 0)
+OtherTab.Size = UDim2.new(0, 150, 0, 220)
+
+Category_3.Name = "Category"
+Category_3.Parent = OtherTab
+Category_3.BackgroundColor3 = Color3.new(0.156863, 0.156863, 0.156863)
+Category_3.BorderSizePixel = 0
+Category_3.Size = UDim2.new(0, 150, 0, 30)
+Category_3.Text = "Other"
+Category_3.TextColor3 = Color3.new(0, 0.835294, 1)
+Category_3.TextSize = 14
+
+A_None.Name = "A_None"
+A_None.Parent = OtherTab
+A_None.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_None.BorderSizePixel = 0
+A_None.Position = UDim2.new(0, 0, 0.134545445, 0)
+A_None.Size = UDim2.new(0, 150, 0, 30)
+A_None.Font = Enum.Font.SciFi
+A_None.Text = "None"
+A_None.TextColor3 = Color3.new(1, 1, 1)
+A_None.TextSize = 20
+A_None.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=0"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=0"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=0"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=0"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=0"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=0"
+Animate.swimidle.SwimIdle.AnimationId = "http://www.roblox.com/asset/?id=0"
+Animate.swim.Swim.AnimationId = "http://www.roblox.com/asset/?id=0"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+A_Anthro.Name = "A_Anthro"
+A_Anthro.Parent = OtherTab
+A_Anthro.BackgroundColor3 = Color3.new(0.196078, 0.196078, 0.196078)
+A_Anthro.BorderSizePixel = 0
+A_Anthro.Position = UDim2.new(0, 0, 0.269090891, 0)
+A_Anthro.Size = UDim2.new(0, 150, 0, 30)
+A_Anthro.Font = Enum.Font.SciFi
+A_Anthro.Text = "Anthro (Default)"
+A_Anthro.TextColor3 = Color3.new(1, 1, 1)
+A_Anthro.TextSize = 20
+A_Anthro.MouseButton1Click:Connect(function()
+Animate.idle.Animation1.AnimationId = "http://www.roblox.com/asset/?id=2510196951"
+Animate.idle.Animation2.AnimationId = "http://www.roblox.com/asset/?id=2510197257"
+Animate.walk.WalkAnim.AnimationId = "http://www.roblox.com/asset/?id=2510202577"
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=2510198475"
+Animate.jump.JumpAnim.AnimationId = "http://www.roblox.com/asset/?id=2510197830"
+Animate.climb.ClimbAnim.AnimationId = "http://www.roblox.com/asset/?id=2510192778"
+Animate.fall.FallAnim.AnimationId = "http://www.roblox.com/asset/?id=2510195892"
+game.Players.LocalPlayer.Character.Humanoid.Jump = true
+end)
+
+wait(1)
+Main:TweenPosition(UDim2.new(0.421999991, 0, 0.28400004, 0))
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Da Hood AimLocker (MAY CLOSE THE GUI)",
+   Callback = function()
+repeat wait() until game:IsLoaded()
+local AbyssLibrary = loadstring(game:HttpGet("https://raw.githubusercontent.com/iHavoc101/Genesis-Studios/main/UserInterface/Luminosity.lua", true))()
+local Optimized = true
+local AllHookProperty = {false, false, false}
+
+local AbyssSettings = {
+    Loaded = false,
+    Target = {
+        UseMouseNearest = "Mouse",
+        WallCheck = false,
+        Grabbed = false,
+        Knocked = false,
+        UseOldWallCheck = false,
+        UseNewWallCheck = true
+    },
+    TargetStrafe = {
+        Enabled = false,
+        Controllable = false,
+        AutoJump = false,
+        Range = 10,
+        Distance = 5,
+        Speed = 4,
+        InfRange = false,
+        TargetOnly = false,
+        HoldSpace = false,
+        ShowRotationRange = false
+    },
+    Speed = {
+        Enabled = false,
+        Motion = false,
+        BHop = false,
+        Amount = 1
+    },
+    Strafe = {
+        Enabled = false
+    },
+    NoJumpCd = {
+        Enabled = false
+    },
+    Fly = {
+        Enabled = false,
+        Normal = true,
+        Height = 35,
+        MoveOnly = false,
+        Amount = 1
+    },
+    SilentAim = {
+        Enabled = false,
+        CustomPrediction = false,
+        PredictionAmount = 0.165,
+        SilentRotation = false,
+        UseRange = false,
+        Range = 15,
+        ForceHead = "Head",
+        DrawingCircle = false,
+        DrawingCircleSize = 100,
+        NearestDistanceBehindCheck = false
+    },
+    Disabler = {
+        CFrameDetection = false,
+        Ban = false,
+        Crash = false
+    },
+    NoRotation = {
+        Enabled = false
+    },
+    NoSlow = {
+        Enabled = false,
+        GunOnly = false
+    },
+    AutoHeal = {
+        Enabled = false,
+        HealthBelow = 80
+    },
+    MotionBlur = {
+        Enabled = false,
+        BlurAmount = 50
+    },
+    TargetGui = {
+        Enabled = false
+    },
+    Watermark = {
+        Enabled = false
+    },
+    FPSBoost = {
+        Enabled = false
+    },
+    LagDetector = {
+        Enabled = false
+    },
+    SpeedGlitch = {
+        Enabled = false,
+        SpeedMultiplier = 8
+    }
+}
+
+local AbyssStorage = {
+    GetStrafeAngle = 0,
+    BHoping = false,
+    Side = "Right",
+    StoredRange = 10,
+    HeldSpace = false,
+    GetPrediction = 0.165,
+    Instance = {},
+    Equipable = false,
+    FPSBeat = 0,
+    GetTime = 0,
+    Macro = false
+}
+
+local Service = setmetatable({}, {
+    __index = function(t, k)
+        return game:GetService(k)
+    end
+})
+
+local RunService = Service.RunService
+local Players = Service.Players
+local LocalPlayer = Players.LocalPlayer
+local UIs = Service.UserInputService
+local TweenService = Service.TweenService
+local CurrentCamera = workspace.CurrentCamera
+local WorldToViewPortPoint = CurrentCamera.WorldToViewportPoint
+local WorldToScreenPoint = CurrentCamera.WorldToScreenPoint
+local Mouse = LocalPlayer:GetMouse()
+local CoreGui = Service.CoreGui
+local Last = CurrentCamera.CFrame.lookVector
+local Blur = Instance.new("BlurEffect", CurrentCamera)
+Blur.Size = 0
+local GuiInset = Service.GuiService:GetGuiInset()
+local Stats = Service.Stats.Network.ServerStatsItem["Data Ping"]
+local ReplicatedStorage = Service.ReplicatedStorage
+
+if not pcall(function() return syn.protect_gui end) then
+    syn = {}
+    syn.protect_gui = function(gui)
+        gui.Parent = CoreGui
+    end
+end
+
+local MainGui = Instance.new("ScreenGui")
+MainGui.Name = "VaultsUI"
+MainGui.Parent = CoreGui
+MainGui.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+syn.protect_gui(MainGui)
+
+local DrawingFunctions = {
+    NewLine = function(Thickness)
+        local Line = Drawing.new("Line")
+        Line.Visible = true
+        Line.Color = Color3.fromRGB(21, 101, 192)
+        Line.Thickness = 1
+        Line.Transparency = 1
+        Line.ZIndex = 2
+        
+        local OutLine = Drawing.new("Line")
+        OutLine.Visible = true
+        OutLine.Color = Color3.fromRGB(0, 0, 0)
+        OutLine.Thickness = 4
+        OutLine.Transparency = 1
+        OutLine.ZIndex = 1
+        return Line, OutLine
+    end,
+    NewCircle = function()
+        local Circle = Drawing.new("Circle")
+        Circle.Transparency = 1
+        Circle.Thickness = 1
+        Circle.ZIndex = 2
+        Circle.Visible = true
+        Circle.Color = Color3.fromRGB(21, 101, 192)
+        Circle.NumSides = 100
+
+        local OutLine = Drawing.new("Circle")
+        OutLine.Visible = true
+        OutLine.Color = Color3.fromRGB(0, 0, 0)
+        OutLine.Transparency = 1
+        OutLine.Thickness = 4
+        OutLine.ZIndex = 1
+        OutLine.NumSides = 100
+        return Circle, OutLine
+    end
+}
+
+local Line1, OutLine1
+local Line2, OutLine2
+local Line3, OutLine3
+local Line4, OutLine4
+local Line5, OutLine5
+local Line6, OutLine6
+local Line7, OutLine7
+local Line8, OutLine8
+
+local DrawingCircle, OutlineDrawingCircle = DrawingFunctions.NewCircle(1)
+
+if not Optimized then
+    Line1, OutLine1 = DrawingFunctions.NewLine()
+    Line2, OutLine2 = DrawingFunctions.NewLine()
+    Line3, OutLine3 = DrawingFunctions.NewLine()
+    Line4, OutLine4 = DrawingFunctions.NewLine()
+    Line5, OutLine5 = DrawingFunctions.NewLine()
+    Line6, OutLine6 = DrawingFunctions.NewLine()
+    Line7, OutLine7 = DrawingFunctions.NewLine()
+    Line8, OutLine8 = DrawingFunctions.NewLine()
+end
+
+local IsNetwork = function(GetPlayer)
+    return GetPlayer and GetPlayer.Character and GetPlayer.Character:FindFirstChild("HumanoidRootPart") ~= nil and GetPlayer.Character:FindFirstChild("Humanoid") ~= nil and GetPlayer.Character:FindFirstChild("Head") ~= nil and true or false
+end
+
+local AbyssFunctions = {
+    TargetStrafe = function(IsAutoJump, IsControllable, GetSpeed, GetDistance, GetEnemy)
+        if IsControllable then
+            if AbyssStorage.Side == "Right" then
+                AbyssStorage.GetStrafeAngle = AbyssStorage.GetStrafeAngle + GetSpeed
+            else
+                AbyssStorage.GetStrafeAngle = AbyssStorage.GetStrafeAngle - GetSpeed
+            end
+        else
+            if AbyssStorage.GetStrafeAngle > 360 then
+                AbyssStorage.GetStrafeAngle = 0
+            else
+                AbyssStorage.GetStrafeAngle = AbyssStorage.GetStrafeAngle + GetSpeed
+            end
+        end
+        LocalPlayer.Character.HumanoidRootPart.CFrame = GetEnemy.CFrame * CFrame.Angles(0, math.rad(AbyssStorage.GetStrafeAngle), 0) * CFrame.new(0, 0, GetDistance)
+    end,
+    NearestDistance = function()
+        local Target = nil
+        local Distance = math.huge
+        
+        for i, v in next, Players:GetPlayers() do
+            if v ~= LocalPlayer and IsNetwork(LocalPlayer) and IsNetwork(v) then
+                local DistanceFromPlayer = (v.Character.HumanoidRootPart.Position - LocalPlayer.Character.HumanoidRootPart.Position).Magnitude
+                local RootPosition, RootVisible = CurrentCamera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
+                if (not AbyssSettings.Target.NearestDistanceBehindCheck or RootVisible) then
+                    if Distance > DistanceFromPlayer then
+                        Target = v
+                        Distance = DistanceFromPlayer
+                    end
+                end
+            end
+        end
+    
+        return Target, Distance
+    end,
+    NearestMouse = function()
+        local Target = nil
+        local Distance = math.huge
+    
+        for i, v in next, Players:GetPlayers() do
+            if v ~= LocalPlayer and IsNetwork(LocalPlayer) and IsNetwork(v) then
+                local RootPosition, RootVisible = CurrentCamera:WorldToViewportPoint(v.Character.HumanoidRootPart.Position)
+                local DistanceFromMouse = (Vector2.new(RootPosition.X, RootPosition.Y) - Vector2.new(Mouse.X, Mouse.Y)).Magnitude
+                if RootVisible and Distance > DistanceFromMouse then
+                    Target = v
+                    Distance = DistanceFromMouse
+                end
+            end
+        end
+    
+        return Target, Distance
+    end,
+    ToScreen = function(Point)
+        local ScreenPosition, InScreen = WorldToViewPortPoint(CurrentCamera, Point)
+    
+        return Vector2.new(ScreenPosition.X, ScreenPosition.Y), ScreenPosition, InScreen
+    end,
+    GetVertices = function(BasePos, Multipler)
+        local Size = Vector3.new(1, 1, 1) * Multipler
+        local Vertices = {}
+        
+        Vertices.Top = BasePos + Vector3.new(0, 0, Size.Z)
+        Vertices.Bottom = BasePos + Vector3.new(0, 0, -Size.Z)
+        Vertices.Right = BasePos + Vector3.new(-Size.X, 0, 0)
+        Vertices.Left = BasePos + Vector3.new(Size.X, 0, 0)
+        
+        Vertices.Corner1 = BasePos + (Vector3.new(0, 0, Size.Z) + Vector3.new(-Size.Z, 0, 0)) / 1.5
+        Vertices.Corner3 = BasePos + (Vector3.new(0, 0, -Size.Z) + Vector3.new(Size.Z, 0, 0)) / 1.5
+        Vertices.Corner4 = BasePos + (Vector3.new(Size.X, 0, 0) + Vector3.new(0, 0, Size.Z)) / 1.5
+        Vertices.Corner2 = BasePos + (Vector3.new(-Size.X, 0, 0) + Vector3.new(0, 0, -Size.Z)) / 1.5
+        
+        return Vertices
+    end,
+    Notify = function(Desc, Delay, Type)
+        local NovoIntentNotification = Instance.new("Frame")
+        local Name = Instance.new("TextLabel")
+        local Description = Instance.new("TextLabel")
+        local Warnning = Instance.new("ImageButton")
+        local Line = Instance.new("Frame")
+        local Info = Instance.new("ImageButton")
+        
+        NovoIntentNotification.Name = "NovoIntent"
+        NovoIntentNotification.Parent = MainGui
+        NovoIntentNotification.BackgroundColor3 = Color3.fromRGB(10, 10, 10)
+        NovoIntentNotification.BackgroundTransparency = 0.2
+        NovoIntentNotification.BorderSizePixel = 0
+        NovoIntentNotification.Position = UDim2.new(1, 5, 0, 50)
+        NovoIntentNotification.Size = UDim2.new(0, 400, 0, 65)
+        
+        Name.Name = "Name"
+        Name.Parent = NovoIntentNotification
+        Name.BackgroundColor3 = Color3.fromRGB(118, 118, 118)
+        Name.BackgroundTransparency = 1.000
+        Name.Position = UDim2.new(0.154267296, 0, 0.12849167, 0)
+        Name.Size = UDim2.new(0, 287, 0, 14)
+        Name.Font = Enum.Font.Roboto
+        Name.Text = "Abyss Notification"
+        Name.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Name.TextScaled = true
+        Name.TextSize = 16.000
+        Name.TextWrapped = true
+        Name.TextXAlignment = Enum.TextXAlignment.Left
+        
+        Description.Name = "Description"
+        Description.Parent = NovoIntentNotification
+        Description.BackgroundColor3 = Color3.fromRGB(118, 118, 118)
+        Description.BackgroundTransparency = 1.000
+        Description.Position = UDim2.new(0.153999954, 0, 0.430000156, 0)
+        Description.Size = UDim2.new(0, 295, 0, 19)
+        Description.Font = Enum.Font.Roboto
+        Description.Text = Desc .. " (" .. Delay .. "s)"
+        Description.TextColor3 = Color3.fromRGB(255, 255, 255)
+        Description.TextSize = 16.000
+        Description.TextXAlignment = Enum.TextXAlignment.Left
+        
+        Warnning.Name = "Warnning"
+        Warnning.Parent = NovoIntentNotification
+        Warnning.BackgroundTransparency = 1.000
+        Warnning.LayoutOrder = 2
+        Warnning.Position = UDim2.new(0.0389830507, 0, 0.183081031, 0)
+        Warnning.Size = UDim2.new(0, 32, 0, 32)
+        Warnning.ZIndex = 2
+        Warnning.Image = "rbxassetid://3926305904"
+        Warnning.ImageRectOffset = Vector2.new(364, 324)
+        Warnning.ImageRectSize = Vector2.new(36, 36)
+        if Type == "Warnning" then
+            Warnning.Visible = true
+        else
+            Warnning.Visible = false
+        end
+        
+        Line.Name = "Line"
+        Line.Parent = NovoIntentNotification
+        Line.AnchorPoint = Vector2.new(1, 0)
+        Line.BackgroundColor3 = Color3.fromRGB(21, 101, 192)
+        Line.BorderSizePixel = 0
+        Line.Position = UDim2.new(0, 0, 0.941999912, 0)
+        Line.Size = UDim2.new(0, 0, 0, 3)
+        
+        Info.Name = "Info"
+        Info.Parent = NovoIntentNotification
+        Info.BackgroundTransparency = 1.000
+        Info.Position = UDim2.new(0.0390000008, 0, 0.182999998, 0)
+        Info.Size = UDim2.new(0, 32, 0, 32)
+        if Type == "Info" then
+            Info.Visible = true
+        else
+            Info.Visible = false
+        end
+        Info.ZIndex = 2
+        Info.Image = "rbxassetid://3926305904"
+        Info.ImageRectOffset = Vector2.new(964, 84)
+        Info.ImageRectSize = Vector2.new(36, 36)
+        NovoIntentNotification:TweenPosition(UDim2.new(1, -400, 0, 50), "Out", "Sine", 0.35) 
+        wait(0.35)
+        Line:TweenPosition(UDim2.new(1, 0, 0.941999912, 0), "Out", "Linear", Delay)
+        Line:TweenSize(UDim2.new(0, 400, 0, 3), "Out", "Linear", Delay)
+        repeat
+            Delay = Delay - 0.1
+            if 0.1 > Delay then
+                Description.Text = Desc .. " (0.0s)"
+            else
+                Description.Text = Desc .. " (" .. Delay .. "s)"
+            end
+            wait(0.0925)
+        until 0 > Delay
+        NovoIntentNotification:TweenPosition(UDim2.new(1, 5, 0, 50), "Out", "Sine", 0.35)
+        wait(0.35)
+        NovoIntentNotification:Destroy()
+    end,
+    Knocked = function(GetPlayer)
+        if IsNetwork(GetPlayer) then
+            return GetPlayer.Character.BodyEffects["K.O"].Value and true or false
+        end
+        return false
+    end,
+    Grabbing = function(GetPlayer)
+        if IsNetwork(GetPlayer) then
+            return GetPlayer.Character:FindFirstChild("GRABBING_CONSTRAINT") and true or false
+        end
+        return false
+    end,
+    Round = function(num, numDecimalPlaces)
+        return tonumber(string.format("%." .. (numDecimalPlaces or 0) .. "f", num))
+    end,
+    CalculateTime = function(GetValue)
+        local HoursMul, MinutesMul, SecondsMul = 60 * 60, 60, 1
+     
+        local ResultHours = math.floor(GetValue / HoursMul)
+        GetValue = GetValue - (HoursMul * ResultHours)
+        local ResultMinutes = math.floor(GetValue / MinutesMul)
+        GetValue = GetValue - (MinutesMul * ResultMinutes)
+        local ResultSeconds = GetValue
+        return ResultHours, ResultMinutes, ResultSeconds
+    end
+}
+
+local AbyssMiscFunctions = {
+    WallCheck = function(OriginPart, Part)
+        if IsNetwork(LocalPlayer) then
+            local IgnoreList = {CurrentCamera, LocalPlayer.Character, OriginPart.Parent}
+            local Parts = CurrentCamera:GetPartsObscuringTarget(
+                {
+                    OriginPart.Position, 
+                    Part.Position
+                },
+                IgnoreList
+            )
+        
+            for i, v in pairs(Parts) do
+                if v.Transparency >= 0.3 then
+                    AbyssStorage.Instance[#AbyssStorage.Instance + 1] = v
+                end
+        
+                if v.Material == Enum.Material.Glass then
+                    AbyssStorage.Instance[#AbyssStorage.Instance + 1] = v
+                end
+            end
+        
+            return #Parts == 0
+        end
+        return true
+    end,
+    CameraCheck = function(GetPosition, IgnoredList)
+        if IsNetwork(LocalPlayer) then
+            return #CurrentCamera:GetPartsObscuringTarget({LocalPlayer.Character.Head.Position, GetPosition}, IgnoredList) == 0 and true or false
+        end
+    end,
+    NearestType = function(Type)
+        if Type == "Distance" then
+            return AbyssFunctions.NearestDistance()
+        elseif Type == "Mouse" then
+            return AbyssFunctions.NearestMouse()
+        end
+    end
+}
+
+local Watermark = Instance.new("Frame")
+local AmbientShadow = Instance.new("ImageLabel")
+local UmbraShadow = Instance.new("ImageLabel")
+local Container = Instance.new("Frame")
+local Line = Instance.new("Frame")
+local Title = Instance.new("TextLabel")
+
+Watermark.Name = "Watermark"
+Watermark.Parent = MainGui
+Watermark.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+Watermark.BackgroundTransparency = 0.700
+Watermark.BorderSizePixel = 0
+Watermark.Position = UDim2.new(0.00665557384, 0, 0.0178571437, 0)
+Watermark.Size = UDim2.new(0, 320, 0, 32)
+Watermark.Visible = false
+
+AmbientShadow.Name = "AmbientShadow"
+AmbientShadow.Parent = Watermark
+AmbientShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+AmbientShadow.BackgroundTransparency = 1.000
+AmbientShadow.BorderSizePixel = 0
+AmbientShadow.Position = UDim2.new(0.5, 0, 0.476000011, 3)
+AmbientShadow.Size = UDim2.new(1, 5, 1, 5)
+AmbientShadow.ZIndex = 0
+AmbientShadow.Image = "rbxassetid://1316045217"
+AmbientShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+AmbientShadow.ImageTransparency = 0.500
+AmbientShadow.ScaleType = Enum.ScaleType.Slice
+AmbientShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+UmbraShadow.Name = "UmbraShadow"
+UmbraShadow.Parent = Watermark
+UmbraShadow.AnchorPoint = Vector2.new(0.5, 0.5)
+UmbraShadow.BackgroundTransparency = 1.000
+UmbraShadow.BorderSizePixel = 0
+UmbraShadow.Position = UDim2.new(0.5, 0, 0.5, 6)
+UmbraShadow.Size = UDim2.new(1, 10, 1, 10)
+UmbraShadow.ZIndex = 0
+UmbraShadow.Image = "rbxassetid://1316045217"
+UmbraShadow.ImageColor3 = Color3.fromRGB(0, 0, 0)
+UmbraShadow.ImageTransparency = 0.850
+UmbraShadow.ScaleType = Enum.ScaleType.Slice
+UmbraShadow.SliceCenter = Rect.new(10, 10, 118, 118)
+
+Container.Name = "Container"
+Container.Parent = Watermark
+Container.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Container.BackgroundTransparency = 0.650
+Container.BorderSizePixel = 0
+Container.Position = UDim2.new(0, 0, 0.0778557062, 0)
+Container.Size = UDim2.new(0, 320, 0, 29)
+Container.ZIndex = 2
+
+Line.Name = "Line"
+Line.Parent = Container
+Line.BackgroundColor3 = Color3.fromRGB(21, 101, 192)
+Line.BorderSizePixel = 0
+Line.Position = UDim2.new(0.00182670204, 0, -0.0621119216, 0)
+Line.Size = UDim2.new(0, 320, 0, 3)
+
+Title.Name = "Title"
+Title.Parent = Container
+Title.BackgroundColor3 = Color3.fromRGB(118, 118, 118)
+Title.BackgroundTransparency = 1.000
+Title.Position = UDim2.new(0.0367155336, 0, 0.238294989, 0)
+Title.Size = UDim2.new(0, 310, 0, 16)
+Title.Font = Enum.Font.Roboto
+Title.Text = "Abyss | Da Hood | 60 fps | 30 ms | 00:00:00"
+Title.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title.TextSize = 16.000
+Title.TextWrapped = true
+Title.TextXAlignment = Enum.TextXAlignment.Left
+
+local TargetUI = Instance.new("Frame")
+local UICorner = Instance.new("UICorner")
+local Container_2 = Instance.new("Frame")
+local Line_2 = Instance.new("Frame")
+local Profile = Instance.new("ImageButton")
+local HealthBorder = Instance.new("Frame")
+local HealthBar = Instance.new("Frame")
+local UICorner_2 = Instance.new("UICorner")
+local HealthText = Instance.new("TextLabel")
+local HealthIcon = Instance.new("ImageButton")
+local Title_2 = Instance.new("TextLabel")
+local ArmorBorder = Instance.new("Frame")
+local ArmorBar = Instance.new("Frame")
+local UICorner_3 = Instance.new("UICorner")
+local ArmorText = Instance.new("TextLabel")
+local ArmorIcon = Instance.new("ImageButton")
+local UmbraShadow_2 = Instance.new("ImageLabel")
+local AmbientShadow_2 = Instance.new("ImageLabel")
+
+TargetUI.Name = "Target UI"
+TargetUI.Parent = MainGui
+TargetUI.AnchorPoint = Vector2.new(0.5, 0.5)
+TargetUI.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+TargetUI.BackgroundTransparency = 0.700
+TargetUI.BorderSizePixel = 0
+TargetUI.Position = UDim2.new(0.504575729, 0, 0.787337661, 0)
+TargetUI.Size = UDim2.new(0, 251, 0, 97)
+TargetUI.Visible = false
+
+UICorner.CornerRadius = UDim.new(0, 4)
+UICorner.Parent = TargetUI
+
+Container_2.Name = "Container"
+Container_2.Parent = TargetUI
+Container_2.BackgroundColor3 = Color3.fromRGB(31, 31, 31)
+Container_2.BackgroundTransparency = 0.700
+Container_2.BorderSizePixel = 0
+Container_2.Position = UDim2.new(0.00973401312, 0, 0.027855942, 0)
+Container_2.Size = UDim2.new(0, 248, 0, 94)
+
+Line_2.Name = "Line"
+Line_2.Parent = Container_2
+Line_2.BackgroundColor3 = Color3.fromRGB(21, 101, 192)
+Line_2.BorderSizePixel = 0
+Line_2.Position = UDim2.new(-0.00261220615, 0, -0.00655640941, 0)
+Line_2.Size = UDim2.new(0, 249, 0, 3)
+
+Profile.Name = "Profile"
+Profile.Parent = Container_2
+Profile.BackgroundColor3 = Color3.fromRGB(255, 255, 255)
+Profile.BackgroundTransparency = 1.000
+Profile.Position = UDim2.new(-0.00427350448, 0, 0.0338983051, 0)
+Profile.Size = UDim2.new(0, 90, 0, 90)
+Profile.AutoButtonColor = false
+Profile.Image = "rbxthumb://type=AvatarHeadShot&id=590180069&w=420&h=420"
+
+HealthBorder.Name = "HealthBorder"
+HealthBorder.Parent = Container_2
+HealthBorder.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+HealthBorder.BackgroundTransparency = 0.500
+HealthBorder.BorderSizePixel = 0
+HealthBorder.Position = UDim2.new(0.400000006, 0, 0.349999994, 0)
+HealthBorder.Size = UDim2.new(0, 135, 0, 22)
+
+HealthBar.Name = "HealthBar"
+HealthBar.Parent = HealthBorder
+HealthBar.Active = true
+HealthBar.BackgroundColor3 = Color3.fromRGB(21, 101, 192)
+HealthBar.BorderSizePixel = 0
+HealthBar.ClipsDescendants = true
+HealthBar.Position = UDim2.new(0.0220597833, 0, -0.0436026901, 0)
+HealthBar.Size = UDim2.new(1, 0, 1, 0)
+
+UICorner_2.CornerRadius = UDim.new(0, 3)
+UICorner_2.Parent = HealthBar
+
+HealthText.Name = "HealthText"
+HealthText.Parent = HealthBorder
+HealthText.BackgroundColor3 = Color3.fromRGB(118, 118, 118)
+HealthText.BackgroundTransparency = 1.000
+HealthText.Size = UDim2.new(0, 138, 0, 22)
+HealthText.Font = Enum.Font.Roboto
+HealthText.Text = "100"
+HealthText.TextColor3 = Color3.fromRGB(255, 255, 255)
+HealthText.TextSize = 20.000
+
+HealthIcon.Name = "HealthIcon"
+HealthIcon.Parent = HealthBorder
+HealthIcon.BackgroundTransparency = 1.000
+HealthIcon.Position = UDim2.new(0.0900000036, 0, 0.119999997, 0)
+HealthIcon.Size = UDim2.new(0, 15, 0, 15)
+HealthIcon.ZIndex = 2
+HealthIcon.Image = "rbxassetid://3926305904"
+HealthIcon.ImageRectOffset = Vector2.new(964, 444)
+HealthIcon.ImageRectSize = Vector2.new(36, 36)
+
+Title_2.Name = "Title"
+Title_2.Parent = Container_2
+Title_2.BackgroundColor3 = Color3.fromRGB(118, 118, 118)
+Title_2.BackgroundTransparency = 1.000
+Title_2.Position = UDim2.new(0.426879644, 0, 0.0496608652, 0)
+Title_2.Size = UDim2.new(0, 132, 0, 25)
+Title_2.Font = Enum.Font.Roboto
+Title_2.Text = "T_4Q (WetAnimeGirls)"
+Title_2.TextColor3 = Color3.fromRGB(255, 255, 255)
+Title_2.TextScaled = true
+Title_2.TextSize = 20.000
+Title_2.TextWrapped = true
+Title_2.TextXAlignment = Enum.TextXAlignment.Left
+
+ArmorBorder.Name = "ArmorBorder"
+ArmorBorder.Parent = Container_2
+ArmorBorder.BackgroundColor3 = Color3.fromRGB(26, 26, 26)
+ArmorBorder.BackgroundTransparency = 0.500
+ArmorBorder.BorderSizePixel = 0
+ArmorBorder.Position = UDim2.new(0.400000006, 0, 0.649999976, 0)
+ArmorBorder.Size = UDim2.new(0, 135, 0, 22)
+
+ArmorBar.Name = "ArmorBar"
+ArmorBar.Parent = ArmorBorder
+ArmorBar.BackgroundColor3 = Color3.fromRGB(21, 101, 192)
+ArmorBar.BorderSizePixel = 0
+ArmorBar.Position = UDim2.new(0.0220597833, 0, -0.0436026901, 0)
+ArmorBar.Size = UDim2.new(1, 0, 1, 0)
+
+UICorner_3.CornerRadius = UDim.new(0, 3)
+UICorner_3.Parent = ArmorBar
+
+ArmorText.Name = "ArmorText"
+ArmorText.Parent = ArmorBorder
+ArmorText.BackgroundColor3 = Color3.fromRGB(118, 118, 118)
+ArmorText.BackgroundTransparency = 1.000
+ArmorText.Size = UDim2.new(0, 138, 0, 21)
+ArmorText.Font = Enum.Font.Roboto
+ArmorText.Text = "100"
+ArmorText.TextColor3 = Color3.fromRGB(255, 255, 255)
+ArmorText.TextSize = 20.000
+
+ArmorIcon.Name = "ArmorIcon"
+ArmorIcon.Parent = ArmorBorder
+ArmorIcon.BackgroundTransparency = 1.000
+ArmorIcon.Position = UDim2.new(0.0900000036, 0, 0.119999997, 0)
+ArmorIcon.Size = UDim2.new(0, 15, 0, 15)
+ArmorIcon.ZIndex = 2
+ArmorIcon.Image = "rbxassetid://3926307971"
+ArmorIcon.ImageRectOffset = Vector2.new(164, 284)
+ArmorIcon.ImageRectSize = Vector2.new(36, 36)
+
+UmbraShadow_2.Name = "UmbraShadow"
+UmbraShadow_2.Parent = TargetUI
+UmbraShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+UmbraShadow_2.BackgroundTransparency = 1.000
+UmbraShadow_2.BorderSizePixel = 0
+UmbraShadow_2.Position = UDim2.new(0.5, 0, 0.5, 6)
+UmbraShadow_2.Size = UDim2.new(1, 10, 1, 10)
+UmbraShadow_2.ZIndex = 0
+UmbraShadow_2.Image = "rbxassetid://1316045217"
+UmbraShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+UmbraShadow_2.ImageTransparency = 0.850
+UmbraShadow_2.ScaleType = Enum.ScaleType.Slice
+UmbraShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+AmbientShadow_2.Name = "AmbientShadow"
+AmbientShadow_2.Parent = TargetUI
+AmbientShadow_2.AnchorPoint = Vector2.new(0.5, 0.5)
+AmbientShadow_2.BackgroundTransparency = 1.000
+AmbientShadow_2.BorderSizePixel = 0
+AmbientShadow_2.Position = UDim2.new(0.5, 0, 0.476000011, 3)
+AmbientShadow_2.Size = UDim2.new(1, 5, 1, 5)
+AmbientShadow_2.ZIndex = 0
+AmbientShadow_2.Image = "rbxassetid://1316045217"
+AmbientShadow_2.ImageColor3 = Color3.fromRGB(0, 0, 0)
+AmbientShadow_2.ImageTransparency = 0.500
+AmbientShadow_2.ScaleType = Enum.ScaleType.Slice
+AmbientShadow_2.SliceCenter = Rect.new(10, 10, 118, 118)
+
+local Window = AbyssLibrary.new("Abyss Internal", "v2.0.0", nil)
+
+local CombatTab = Window.Tab("Combat")
+local TargetFolder = CombatTab.Folder("Target Settings", "Configuration Of Target To Make User Easier To Use.")
+
+TargetFolder.Toggle("Use Distance Nearest", function(State)
+    if State then
+        AbyssSettings.Target.UseMouseNearest = "Distance"
+    else
+        AbyssSettings.Target.UseMouseNearest = "Mouse"
+    end
+end)
+
+TargetFolder.Toggle("Nearest Distance Behind Check", function(State)
+    AbyssSettings.Target.NearestDistanceBehindCheck = State
+end)
+
+TargetFolder.Toggle("Wall Check", function(State)
+    AbyssSettings.Target.WallCheck = State
+end)
+
+TargetFolder.Toggle("Use Old WallCheck", function(State)
+    AbyssSettings.Target.UseOldWallCheck = State
+    AbyssSettings.Target.UseNewWallCheck = not State
+end)
+
+TargetFolder.Toggle("Grabbed Check", function(State)
+    AbyssSettings.Target.Grabbed = State
+end)
+
+TargetFolder.Toggle("Knocked Check", function(State)
+    AbyssSettings.Target.Knocked = State
+end)
+
+local TargetStrafeModule = CombatTab.Cheat("TargetStrafe", "Rotate Around Target & Break Target Lock Velocity.", function(State)
+    AbyssSettings.TargetStrafe.Enabled = State
+end)
+
+TargetStrafeModule.Toggle("Auto Jump", function(State)
+    AbyssSettings.TargetStrafe.AutoJump = State
+end)
+
+TargetStrafeModule.Toggle("Controllable", function(State)
+    AbyssSettings.TargetStrafe.Controllable = State
+end)
+
+if not Optimized then
+    TargetStrafeModule.Toggle("Show Rotation Range", function(State)
+        AbyssSettings.TargetStrafe.ShowRotationRange = State
+    end)
+end
+
+TargetStrafeModule.Toggle("Inf Range", function(State)
+    AbyssSettings.TargetStrafe.InfRange = State
+    if AbyssSettings.TargetStrafe.InfRange then
+        AbyssSettings.TargetStrafe.Range = math.huge
+    else
+        AbyssSettings.TargetStrafe.Range = AbyssStorage.StoredRange
+    end
+end)
+
+TargetStrafeModule.Toggle("Hold Space", function(State)
+    AbyssSettings.TargetStrafe.HoldSpace = State
+end)
+
+TargetStrafeModule.Slider("Distance", {Precise = true, Default = 5, Min = 2, Max = 25}, function(State)
+    AbyssSettings.TargetStrafe.Distance = State
+end)
+
+TargetStrafeModule.Slider("Range", {Precise = true, Default = 15, Min = 2, Max = 50}, function(State)
+    AbyssStorage.StoredRange = AbyssSettings.TargetStrafe.Range
+    if AbyssSettings.TargetStrafe.InfRange then
+        AbyssSettings.TargetStrafe.Range = math.huge
+    else
+        AbyssSettings.TargetStrafe.Range = State
+    end
+end)
+
+TargetStrafeModule.Slider("Speed", {Precise = true, Default = 4, Min = 2, Max = 10}, function(State)
+    AbyssSettings.TargetStrafe.Speed = State
+end)
+
+TargetStrafeModule.TextLabel("[Vawlt]: Range Need to be higher than distance!")
+
+local SilentAimModule = CombatTab.Cheat("Silent Aim", "A Better Version Of Aimbot Without Aiming.", function(State)
+    AbyssSettings.SilentAim.Enabled = State
+end)
+
+SilentAimModule.Toggle("Force Head", function(State)
+    if State then
+        AbyssSettings.SilentAim.ForceHead = "Head"
+    else
+        AbyssSettings.SilentAim.ForceHead = "HumanoidRootPart"
+    end
+end)
+
+SilentAimModule.Toggle("Silent Rotation", function(State)
+    AbyssSettings.SilentAim.SilentRotation = State
+end)
+
+SilentAimModule.Toggle("Drawing Circle", function(State)
+    AbyssSettings.SilentAim.DrawingCircle = State
+end)
+
+SilentAimModule.Slider("Drawing Circle Size", {Precise = true, Default = 100, Min = 0, Max = 500}, function(State)
+    AbyssSettings.SilentAim.DrawingCircleSize = State
+end)
+
+SilentAimModule.Toggle("Use Silent Aim Range", function(State)
+    AbyssSettings.SilentAim.UseRange = State
+end)
+
+SilentAimModule.Slider("Silent Aim Range", {Precise = true, Default = 15, Min = 2, Max = 5000}, function(State)
+    AbyssSettings.SilentAim.Range = State
+end)
+
+SilentAimModule.Toggle("Silent Aim Custom Prediction", function(State)
+    AbyssSettings.SilentAim.CustomPrediction = State
+end)
+
+SilentAimModule.Slider("Silent Aim Prediction Multiplier", {Precise = true, Default = 6, Min = 0, Max = 10}, function(State)
+    AbyssSettings.SilentAim.PredictionAmount = tonumber("0.1" .. State)
+end)
+
+local AutoHealModule = CombatTab.Cheat("Auto Heal", "Only Legit Auto Heal Avalible Now.", function(State)
+    AbyssSettings.AutoHeal.Enabled = State
+end)
+
+AutoHealModule.Slider("Health Below", {Precise = true, Default = 80, Min = 10, Max = 99}, function(State)
+    AbyssSettings.AutoHeal.HealthBelow = State
+end)
+
+local MovementTab = Window.Tab("Movement")
+local SpeedModule = MovementTab.Cheat("Speed", "Making Player Movement Faster.", function(State)
+    AbyssSettings.Speed.Enabled = State
+end)
+
+SpeedModule.Toggle("Motion", function(State)
+    AbyssSettings.Speed.Motion = State
+end)
+
+SpeedModule.Toggle("BHop", function(State)
+    AbyssSettings.Speed.BHop = State
+end)
+
+SpeedModule.Slider("Speed Multiplier", {Precise = true, Default = 1, Min = 1, Max = 10}, function(State)
+    AbyssSettings.Speed.Amount = State
+end)
+
+--[[
+local NoSlowModule = MovementTab.Cheat("NoSlow", "Disable Slow.", function(State)
+    AbyssSettings.NoSlow.Enabled = State
+end)
+
+NoSlowModule.Toggle("Gun Only", function(State)
+    AbyssSettings.NoSlow.GunOnly = State
+end)
+]]
+
+MovementTab.Cheat("Strafe", "Smoother Movement While On Air", function(State)
+    AbyssSettings.Strafe.Enabled = State
+end)
+
+MovementTab.Cheat("Disable Jump Cooldown", "Spamable Jump.", function(State)
+    AbyssSettings.NoJumpCd.Enabled = State
+end)
+
+local FlyModule = MovementTab.Cheat("Fly", "Floating With Height Can Be Used With Target Strafe.", function(State)
+    AbyssSettings.Fly.Enabled = State
+    if State == false and AbyssSettings.Loaded then
+        if IsNetwork(LocalPlayer) then
+            LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 24, 0)
+        end
+    end
+end)
+
+FlyModule.Toggle("Move Only", function(State)
+    AbyssSettings.Fly.MoveOnly = State
+    if State == false and AbyssSettings.Loaded then
+        if IsNetwork(LocalPlayer) then
+            LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.new(0, 24, 0)
+        end
+    end
+end)
+
+FlyModule.Slider("Height", {Precise = true, Default = 35, Min = 10, Max = 100}, function(State)
+    AbyssSettings.Fly.Height = State
+end)
+
+FlyModule.Slider("Speed Multiplier", {Precise = true, Default = 1, Min = 1, Max = 10}, function(State)
+    AbyssSettings.Fly.Amount = State
+end)
+
+local SpeedGltichModule = MovementTab.Cheat("Speed Glitch", "Custom macro built in script.", function(State)
+    AbyssSettings.SpeedGlitch.Enabled = State
+end)
+
+SpeedGltichModule.Slider("Speed Multiplier", {Precise = true, Default = 8, Min = 1, Max = 10}, function(State)
+    AbyssSettings.SpeedGlitch.SpeedMultiplier = tonumber("1" .. State .. "0")
+end)
+
+local RenderTab = Window.Tab("Render")
+
+local MotionBlurModule = RenderTab.Cheat("Motion Blur", "Blur by moving camera can be smooth for users.", function(State)
+    AbyssSettings.MotionBlur.Enabled = State
+end)
+
+MotionBlurModule.Slider("Blur Multiplier", {Precise = true, Default = 5, Min = 1, Max = 10}, function(State)
+    AbyssSettings.MotionBlur.BlurAmount = State * 10
+end)
+
+RenderTab.Cheat("Target GUI", "Show Target In UI.", function(State)
+    AbyssSettings.TargetGui.Enabled = State
+end)
+
+RenderTab.Cheat("Watermark", "Show Watermark Of Script.", function(State)
+    AbyssSettings.Watermark.Enabled = State
+end)
+
+RenderTab.Cheat("Lag Detector", "Show Watermark Of Script.", function(State)
+    AbyssSettings.LagDetector.Enabled = State
+end)
+
+RenderTab.Cheat("FPS Boost", "Disable Snow.", function(State)
+    AbyssSettings.FPSBoost.Enabled = State
+    LocalPlayer.PlayerGui.MainScreenGui.SNOWBALLFRAME.Visible = State
+    if State then
+        workspace.Ignored.SnowBlock.Parent = ReplicatedStorage
+    else
+        if ReplicatedStorage:FindFirstChild("SnowBlock") then
+            ReplicatedStorage.SnowBlock.Parent = workspace.Ignored
+        end
+    end
+end)
+
+local MiscTab = Window.Tab("Misc")
+
+local DisablerFolder = MiscTab.Folder("Disabler Notify", "Sus.")
+
+DisablerFolder.Toggle("CFrame", function(State)
+    AbyssSettings.Disabler.CFrameDetection = State
+end)
+
+DisablerFolder.Toggle("Ban", function(State)
+    AbyssSettings.Disabler.Ban = State
+end)
+
+DisablerFolder.Toggle("Crash", function(State)
+    AbyssSettings.Disabler.Crash = State
+end)
+
+MiscTab.Cheat("No Rotation", "Prevent LocalPlayer From Rotating By Shiftlock. & Auto Rotating", function(State)
+    AbyssSettings.NoRotation.Enabled = State
+end)
+
+local TimeTick
+TimeTick = hookfunction(wait, function(JumpCooldown)
+    if JumpCooldown == 1.5 and (AbyssSettings.Speed.BHop and AbyssSettings.Speed.Enabled) or AbyssSettings.NoJumpCd.Enabled then 
+        return TimeTick()
+    end
+    return TimeTick(JumpCooldown)
+end)
+
+UIs.InputBegan:Connect(function(Input, GameProcessed)
+    if GameProcessed then
+        return
+    end
+    if Input.KeyCode == Enum.KeyCode.Q then
+        AbyssStorage.Macro = true
+    end
+    if Input.KeyCode == Enum.KeyCode.RightShift then
+        Window:Toggle()
+    end
+    if Input.KeyCode == Enum.KeyCode.A then
+        AbyssStorage.Side = "Left"
+    end
+    if Input.KeyCode == Enum.KeyCode.D then
+        AbyssStorage.Side = "Right"
+    end
+    if Input.KeyCode == Enum.KeyCode.Space then
+        AbyssStorage.HeldSpace = true
+    end
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        AbyssStorage.RotatingCamera = true
+    end
+end)
+
+UIs.InputEnded:Connect(function(Input, GameProcessed)
+    if GameProcessed then
+        return
+    end
+    if Input.KeyCode == Enum.KeyCode.Space then
+        AbyssStorage.HeldSpace = false
+    end
+    if Input.KeyCode == Enum.KeyCode.Q then
+        AbyssStorage.Macro = false
+    end
+    if Input.UserInputType == Enum.UserInputType.MouseButton2 then
+        AbyssStorage.RotatingCamera = false
+    end
+end)
+
+RunService.Heartbeat:Connect(function()
+    if AbyssSettings.Watermark.Enabled then
+        AbyssStorage.FPSBeat = AbyssStorage.FPSBeat + 1
+    end
+
+    if AbyssSettings.MotionBlur.Enabled then
+        if not Blur and CurrentCamera:FindFirstChild("Blur") then Instance.new("Blur", CurrentCamera).Size = 0 end
+        Blur.Size = math.abs((CurrentCamera.CFrame.lookVector - Last).Magnitude) * AbyssSettings.MotionBlur.BlurAmount
+        Last = CurrentCamera.CFrame.lookVector
+    end
+
+    if AbyssSettings.SilentAim.DrawingCircle then
+        DrawingCircle.Radius = AbyssSettings.SilentAim.DrawingCircleSize
+        DrawingCircle.Position = Vector2.new(Mouse.X, Mouse.Y + GuiInset.Y)
+        DrawingCircle.Visible = true
+
+        OutlineDrawingCircle.Radius = AbyssSettings.SilentAim.DrawingCircleSize
+        OutlineDrawingCircle.Position = Vector2.new(Mouse.X, Mouse.Y + GuiInset.Y)
+        OutlineDrawingCircle.Visible = true
+    else
+        DrawingCircle.Visible = false
+        OutlineDrawingCircle.Visible = false
+    end
+
+    if IsNetwork(LocalPlayer) then
+        if AbyssSettings.SpeedGlitch.Enabled and AbyssStorage.Macro then
+            if LocalPlayer.Character.Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall then
+                LocalPlayer.Character.HumanoidRootPart.Velocity = CurrentCamera.CFrame.lookVector * AbyssSettings.SpeedGlitch.SpeedMultiplier
+                if AbyssStorage.Angle == 1 then
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(45), 0)
+                    AbyssStorage.Angle = 0
+                else
+                    LocalPlayer.Character.HumanoidRootPart.CFrame = LocalPlayer.Character.HumanoidRootPart.CFrame * CFrame.Angles(0, math.rad(-45), 0)
+                    AbyssStorage.Angle = 1
+                end
+            end
+        end
+
+        if AbyssSettings.AutoHeal.Enabled then
+            if LocalPlayer.Character.Humanoid.Health < AbyssSettings.AutoHeal.HealthBelow then
+                for i, v in pairs(LocalPlayer.Character:GetChildren()) do
+                    if v:FindFirstChild("Eat") or v:FindFirstChild("Drink") then
+                        v:Activate()
+                    else
+                        AbyssStorage.Equipable = true
+                    end
+                end
+            end
+            if AbyssStorage.Equipable then
+                pcall(function()
+                    for i3, v3 in pairs(LocalPlayer.Backpack:GetChildren()) do
+                        if v3:FindFirstChild("Eat") or v3:FindFirstChild("Drink") then
+                            LocalPlayer.Character.Humanoid:EquipTool(v3)
+                            AbyssStorage.Equipable = false
+                        end
+                    end
+                end)
+            end
+        end
+
+        if AbyssSettings.Speed.Enabled and not AbyssSettings.Fly.Enabled then
+            if LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0 then
+                if AbyssSettings.Speed.Motion then
+                    LocalPlayer.Character:TranslateBy(LocalPlayer.Character.Humanoid.MoveDirection * AbyssSettings.Speed.Amount / 1.5)
+                end
+                if AbyssSettings.Speed.BHop and LocalPlayer.Character.Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall then
+                    LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+                end
+            end
+        end
+        if AbyssSettings.SilentAim.Enabled then
+            if AbyssSettings.SilentAim.SilentRotation then
+                local GetEnemy, GetEnemyPos = AbyssMiscFunctions.NearestType(AbyssSettings.Target.UseMouseNearest)
+                if IsNetwork(GetEnemy) then
+                    local PrimaryPartOfChar = LocalPlayer.Character.PrimaryPart
+                    local TargetRoot = GetEnemy.Character.HumanoidRootPart
+                    if GetEnemy.Character.Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall or GetEnemy.Character.Humanoid:GetState() ~= Enum.HumanoidStateType.Jumping and (not AbyssSettings.Target.Knocked or not AbyssFunctions.Knocked(NearestTarget)) then
+                        local NearestPos = CFrame.new(PrimaryPartOfChar.Position, Vector3.new(TargetRoot.Position.X, TargetRoot.Position.Y, TargetRoot.Position.Z))
+                        LocalPlayer.Character:SetPrimaryPartCFrame(NearestPos)
+                    end
+                end
+            end
+        end
+
+        if AbyssSettings.TargetStrafe.Enabled then
+            local GetEnemy, GetEnemyPos = AbyssMiscFunctions.NearestType(AbyssSettings.Target.UseMouseNearest)
+            if GetEnemy and GetEnemy.Character and AbyssSettings.TargetStrafe.Range > (LocalPlayer.Character.HumanoidRootPart.Position - GetEnemy.Character.HumanoidRootPart.Position).Magnitude and (not AbyssSettings.Target.Knocked or not AbyssFunctions.Knocked(NearestTarget)) and (not AbyssSettings.TargetStrafe.HoldSpace or AbyssStorage.HeldSpace) then
+                if AbyssSettings.TargetStrafe.AutoJump and LocalPlayer.Character.Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall then
+                    LocalPlayer.Character.Humanoid:ChangeState("Jumping")
+                end
+                AbyssFunctions.TargetStrafe(AbyssSettings.TargetStrafe.AutoJump, AbyssSettings.TargetStrafe.Controllable, AbyssSettings.TargetStrafe.Speed, AbyssSettings.TargetStrafe.Distance, GetEnemy.Character.HumanoidRootPart)
+            end
+        end
+
+        if not AbyssStorage.Macro then
+            if AbyssSettings.NoRotation.Enabled then
+                LocalPlayer.Character.Humanoid.AutoRotate = false
+            else
+                LocalPlayer.Character.Humanoid.AutoRotate = true
+            end
+        end
+
+        if AbyssSettings.Fly.Enabled and (not AbyssSettings.Fly.MoveOnly or LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0) then
+            if AbyssSettings.Fly.Normal then
+                local AngleX, AngleY, AngleZ = LocalPlayer.Character.HumanoidRootPart.CFrame:ToEulerAnglesYXZ()
+                LocalPlayer.Character.HumanoidRootPart.CFrame = CFrame.new(LocalPlayer.Character.HumanoidRootPart.CFrame.X, AbyssSettings.Fly.Height + 24, LocalPlayer.Character.HumanoidRootPart.CFrame.Z) * CFrame.Angles(AngleX, AngleY, AngleZ)
+                LocalPlayer.Character.Humanoid:ChangeState("Freefall")
+                LocalPlayer.Character:TranslateBy(LocalPlayer.Character.Humanoid.MoveDirection * AbyssSettings.Fly.Amount / 1.5)
+            end
+        end
+
+        if AbyssSettings.Strafe.Enabled then
+            if LocalPlayer.Character.Humanoid.MoveDirection.Magnitude > 0 and LocalPlayer.Character.Humanoid:GetState() == Enum.HumanoidStateType.Freefall and not AbyssSettings.Speed.Enabled then
+                LocalPlayer.Character:TranslateBy(LocalPlayer.Character.Humanoid.MoveDirection / 2.1)
+            end
+        end
+
+        if not Optimized then
+            if AbyssSettings.TargetStrafe.ShowRotationRange then
+                local GetEnemy, GetEnemyPos = AbyssMiscFunctions.NearestType(AbyssSettings.Target.UseMouseNearest)
+                if GetEnemy then
+                    local RootPos = GetEnemy.Character.HumanoidRootPart.Position
+                    local Vertices = AbyssFunctions.GetVertices(Vector3.new(RootPos.X, RootPos.Y - 2, RootPos.Z), AbyssSettings.TargetStrafe.Distance)
+                    
+                    local PointA, z, AVisible = AbyssFunctions.ToScreen(Vertices.Top)
+                    local PointB, z, BVisible = AbyssFunctions.ToScreen(Vertices.Corner1)
+                    local PointC, z, CVisible = AbyssFunctions.ToScreen(Vertices.Right)
+                    local PointD, z, DVisible = AbyssFunctions.ToScreen(Vertices.Corner2)
+                    local PointE, z, EVisible = AbyssFunctions.ToScreen(Vertices.Bottom)
+                    local PointF, z, FVisible = AbyssFunctions.ToScreen(Vertices.Corner3)
+                    local PointG, z, GVisible = AbyssFunctions.ToScreen(Vertices.Left)
+                    local PointH, z, HVisible = AbyssFunctions.ToScreen(Vertices.Corner4)
+                    
+                    if AVisible and BVisible and CVisible and DVisible and EVisible and FVisible and GVisible and HVisible then
+                        Line1.From = PointA
+                        Line1.To = PointB
+                        Line1.Visible = true
+                        
+                        Line2.From = PointB
+                        Line2.To = PointC
+                        Line2.Visible = true
+                        
+                        Line3.From = PointC
+                        Line3.To = PointD
+                        Line3.Visible = true
+                        
+                        Line4.From = PointD
+                        Line4.To = PointE
+                        Line4.Visible = true
+                        
+                        Line5.From = PointE
+                        Line5.To = PointF
+                        Line5.Visible = true
+                        
+                        Line6.From = PointF
+                        Line6.To = PointG
+                        Line6.Visible = true
+                        
+                        Line7.From = PointG
+                        Line7.To = PointH
+                        Line7.Visible = true
+                        
+                        Line8.From = PointH
+                        Line8.To = PointA
+                        Line8.Visible = true
+                        
+                        OutLine1.From = PointA
+                        OutLine1.To = PointB
+                        OutLine1.Visible = true
+                        
+                        OutLine2.From = PointB
+                        OutLine2.To = PointC
+                        OutLine2.Visible = true
+                        
+                        OutLine3.From = PointC
+                        OutLine3.To = PointD
+                        OutLine3.Visible = true
+                        
+                        OutLine4.From = PointD
+                        OutLine4.To = PointE
+                        OutLine4.Visible = true
+                        
+                        OutLine5.From = PointE
+                        OutLine5.To = PointF
+                        OutLine5.Visible = true
+                        
+                        OutLine6.From = PointF
+                        OutLine6.To = PointG
+                        OutLine6.Visible = true
+                        
+                        OutLine7.From = PointG
+                        OutLine7.To = PointH
+                        OutLine7.Visible = true
+                        
+                        OutLine8.From = PointH
+                        OutLine8.To = PointA
+                        OutLine8.Visible = true
+                    else
+                        Line1.Visible = false
+                        Line2.Visible = false
+                        Line3.Visible = false
+                        Line4.Visible = false
+                        Line5.Visible = false
+                        Line6.Visible = false
+                        Line7.Visible = false
+                        Line8.Visible = false
+                    
+                        OutLine1.Visible = false
+                        OutLine2.Visible = false
+                        OutLine3.Visible = false
+                        OutLine4.Visible = false
+                        OutLine5.Visible = false
+                        OutLine6.Visible = false
+                        OutLine7.Visible = false
+                        OutLine8.Visible = false
+                    end
+                end
+            else
+                Line1.Visible = false
+                Line2.Visible = false
+                Line3.Visible = false
+                Line4.Visible = false
+                Line5.Visible = false
+                Line6.Visible = false
+                Line7.Visible = false
+                Line8.Visible = false
+            
+                OutLine1.Visible = false
+                OutLine2.Visible = false
+                OutLine3.Visible = false
+                OutLine4.Visible = false
+                OutLine5.Visible = false
+                OutLine6.Visible = false
+                OutLine7.Visible = false
+                OutLine8.Visible = false
+            end
+        end
+    end
+end)
+
+Workspace.Ignored.ChildAdded:Connect(function(newChild)
+    wait()
+    if newChild.Name == "SnowBlock" and AbyssSettings.FPSBoost.Enabled then
+        newChild.Parent = ReplicatedStorage
+    end
+end)
+
+local HookIndex
+HookIndex = hookmetamethod(game, "__index", function(t, k)
+    if t == Mouse and (tostring(k) == "Hit" or tostring(k) == "Target") then
+        if AbyssSettings.SilentAim.Enabled then
+            local NearestTarget, NearestPos = AbyssMiscFunctions.NearestType(AbyssSettings.Target.UseMouseNearest)
+            if NearestTarget and (not AbyssSettings.SilentAim.DrawingCircle or AbyssSettings.SilentAim.DrawingCircleSize > NearestPos) and (not AbyssSettings.Target.Knocked or not AbyssFunctions.Knocked(NearestTarget)) and (not AbyssSettings.Target.Grabbed or not AbyssFunctions.Grabbing(NearestTarget)) and (not AbyssSettings.Target.WallCheck or (not AbyssSettings.Target.UseOldWallCheck or (not AbyssSettings.Target.WallCheck or AbyssMiscFunctions.WallCheck(NearestTarget.Character.HumanoidRootPart, LocalPlayer.Character.HumanoidRootPart))) and (not AbyssSettings.Target.UseNewWallCheck or (not AbyssSettings.Target.WallCheck or AbyssMiscFunctions.CameraCheck(NearestTarget.Character.HumanoidRootPart.Position, {NearestTarget.Character, LocalPlayer.Character, CurrentCamera}) == true))) and (not AbyssSettings.SilentAim.UseRange or AbyssSettings.SilentAim.Range > (LocalPlayer.Character.HumanoidRootPart.Position - NearestTarget.Character.HumanoidRootPart.Position).Magnitude) then
+                local TargetBody 
+                if NearestTarget.Character.Humanoid:GetState() == Enum.HumanoidStateType.Freefall then 
+                    TargetBody = NearestTarget.Character.LeftFoot 
+                else 
+                    TargetBody = NearestTarget.Character[AbyssSettings.SilentAim.ForceHead]
+                end
+                local Prediction = TargetBody.CFrame + (TargetBody.Velocity * 0.165)
+        
+                return (tostring(k) == "Hit" and Prediction or tostring(k) == "Target" and TargetBody)
+            end   
+        end
+    end
+
+    return HookIndex(t, k)
+end)
+
+local AllHookProperty = {false,false,false}
+
+local HookNamecall
+HookNamecall = hookmetamethod(game, "__namecall", function(self, ...)
+    local Args = {...}
+    local Method = getnamecallmethod()
+
+    if tostring(self) == "MainEvent" and tostring(Method) == "FireServer" then
+        if Args[1] == "CHECKER_1" or Args[1] == "OneMoreTime" then
+            if AbyssSettings.Disabler.Ban then
+                AllHookProperty[1] = true
+            end
+            return
+        end
+        if Args[1] == "TeleportDetect" then
+            if AbyssSettings.Disabler.CFrameDetection then
+                AllHookProperty[2] = true
+            end
+            return
+        end
+    elseif getfenv(2).crash then
+        hookfunction(getfenv(2).crash, function()
+            if AbyssSettings.Disabler.Crash then
+                AllHookProperty[3] = true
+            end
+            return
+        end)
+    end
+
+    return HookNamecall(self, ...)
+end)
+
+spawn(function()
+    while wait() do
+        if AllHookProperty[1] then
+            AbyssFunctions.Notify("Attempted To Ban Bypassed!", 1.5, "Warnning")
+            AllHookProperty[1] = false
+        end
+        if AllHookProperty[2] then
+            AbyssFunctions.Notify("Attempted To CFrame Detection Bypassed!", 1.5, "Warnning")
+            AllHookProperty[2] = false
+        end
+        if AllHookProperty[3] then
+            AbyssFunctions.Notify("Attempted To Crash Bypassed!", 1.5, "Warnning")
+            AllHookProperty[3] = false
+        end
+        if AbyssSettings.LagDetector.Enabled then
+            if math.floor(Stats:GetValue()) > 210 then
+                AbyssFunctions.Notify("Lag Detected, [" .. math.floor(Stats:GetValue()) .. "ms]", 1.5, "Info")
+            end
+        end
+    end
+end)
+
+AbyssFunctions.Notify("Script Loaded", 1.5, "Info")
+AbyssSettings.Loaded = true
+
+spawn(function()
+    while wait(0.35) do
+        if AbyssSettings.TargetGui.Enabled then
+            local NearestTarget, NearestPos = AbyssMiscFunctions.NearestType(AbyssSettings.Target.UseMouseNearest)
+            if NearestTarget and IsNetwork(NearestTarget) then
+                local NewHealth = NearestTarget.Character.Humanoid.Health / NearestTarget.Character.Humanoid.MaxHealth
+                Profile.Image = "rbxthumb://type=AvatarHeadShot&id=" .. NearestTarget.UserId .. "&w=420&h=420"
+                Title_2.Text = NearestTarget.Name .. " (" .. NearestTarget.DisplayName .. ")"
+                HealthText.Text = AbyssFunctions.Round(NewHealth * 100, 2)
+                HealthBar:TweenSize(UDim2.new(NewHealth, 0, 1, 0), "In", "Linear", 0.25)
+                if NearestTarget.Character:FindFirstChild("BodyEffects") and NearestTarget.Character:FindFirstChild("BodyEffects"):FindFirstChild("Armor") then
+                    local NewArmor = NearestTarget.Character.BodyEffects.Armor.Value / 200
+                    ArmorText.Text = AbyssFunctions.Round(NewArmor * 100, 2)
+                    ArmorBar:TweenSize(UDim2.new(NewArmor, 0, 1, 0), "In", "Linear", 0.25)
+                else
+                    ArmorText.Text = "Data Not Found!"
+                end
+                TargetUI.Visible = true
+            end
+        else
+            TargetUI.Visible = false
+        end
+    end
+end)
+
+spawn(function()
+    while wait(0.05) do
+        if AbyssSettings.SpeedGlitch.Enabled and AbyssStorage.Macro then
+            LocalPlayer.Character.Humanoid.AutoRotate = not LocalPlayer.Character.Humanoid.AutoRotate
+        end
+    end
+end)
+
+while wait(1) do
+    AbyssStorage.GetTime = AbyssStorage.GetTime + 1
+    if AbyssSettings.Watermark.Enabled then
+        local GetHours, GetMinutes, GetSeconds = AbyssFunctions.CalculateTime(AbyssStorage.GetTime)
+        local HT, MT, ST = "00", "00", "00"
+        if string.len(tostring(GetHours)) == 1 then HT = "0" .. GetHours else HT = GetHours end
+        if string.len(tostring(GetMinutes)) == 1 then MT = "0" .. GetMinutes else MT = GetMinutes end
+        if string.len(tostring(GetSeconds)) == 1 then ST = "0" .. GetSeconds else ST = GetSeconds end
+        Title.Text = "Abyss | Da Hood | " .. AbyssStorage.FPSBeat .. " fps | " .. tostring(math.floor(Stats:GetValue())) .. " ms | " .. HT .. ":" .. MT .. ":" .. ST
+        AbyssStorage.FPSBeat = 0
+        Watermark.Visible = true
+    else
+        Watermark.Visible = false
+    end
+end
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Invisible (Makes you invisible)",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/0Ben1/fe./dbb6ce6f6cee4f7a5c9e20d7b88e83db2a93bf25/Invisible%20GUI'))()
+   end,
+})
+
+local Button = MainTab:CreateButton({
+   Name = "Universal ESP",
+   Callback = function()
+ loadstring(game:HttpGet("https://scriptblox.com/raw/Universal-Script-Exunys-ESP-7126"))()
+   end,
+})
+
+local ArsenalTab = Window:CreateTab("Arsenal🔫", nil) -- Title, Image
+
+local ArsenalSection = ArsenalTab:CreateSection("Arsenal GUI'S")
+
+local Button = ArsenalTab:CreateButton({
+   Name = "Arsenal GUI 1 (Name: Thunder Client, AIMBOT: Working)",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/DuhwahScripts/ArsenalBoltsHub/main/source"))()
+   end,
+})
+
+local Button = ArsenalTab:CreateButton({
+   Name = "Arsenal GUI 2 (Name: Cracked by sufii, AIMBOT: Not Working)",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/ccxmIcal/cracks/main/strikehub.lua"))()
+   end,
+})
+
+local Button = ArsenalTab:CreateButton({
+   Name = "Normal Aimbot",
+   Callback = function()
+ loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+   end,
+})
+
+local DaHoodTab = Window:CreateTab("Da Hood🔫", nil) -- Title, Image
+local DaHoodSection = DaHoodTab:CreateSection("Da Hood GUI's/ SCRIPTS")
+
+local Button = DaHoodTab:CreateButton({
+   Name = "Da Hood Aimlock",
+   Callback = function()
+ getgenv().DNS = {
+    General = {
+        Notifications = true,
+        FOVMode = "PredictionPoint"
+    },
+    Silent = {
+        Main = {
+            Enabled = true,
+            Mode = "Target",
+            Toggle = "C",
+            Prediction = 0.11061,
+            Parts = {"Head","LowerTorso","UpperTorso"}
+        },
+        FOV = {
+            ShowFOV = false,
+            Radius = 35,
+            Color = Color3.fromRGB(0, 71, 171),
+            Filled = false,
+            Transparency = 0.8
+        }
+    },
+    Camlock = {
+        Main = {
+            Enabled = true,
+            Key = "C",
+            UnlockKey = "Z",
+            SmoothLock = true,
+            Smoothness = 0.0312,
+            PredictMovement = true,
+            Prediction = 0.072,
+            Shake = true,
+            ShakeValue = 19,
+            Parts = {"Head"}
+        },
+        FOV = {
+            UseFOV = true,
+            ShowFOV = false,
+            Radius = 55,
+            Color = Color3.fromRGB(0, 71, 171),
+            Filled = false,
+            Transparency = 0.4
+        }
+    },
+    Tracer = {
+        Enabled = false,
+        Color = Color3.fromRGB(137, 207, 240),
+        Transparency = 0.4,
+        Visible = false
+    },
+    AutoPrediction = { -- Do NOT disable auto pred it will break ur script fixing next update
+        Enabled = true,
+        ping20_30 = 0.102,
+        ping30_40 = 0.107,
+        ping40_50 = 0.11,
+        ping50_60 = 0.12731,
+        ping60_70 = 0.12731,
+        ping70_80 = 0.12951,
+        ping80_90 = 0.13181,
+        ping90_100 = 0.138,
+        ping100_110 = 0.146,
+        ping110_120 = 0.1367,
+        ping120_130 = 0.1401,
+        ping130_140 = 0.1437,
+        ping140_150 = 0.153,
+        ping150_160 = 0.1514,
+        ping160_170 = 0.1663,
+        ping170_180 = 0.1672,
+        ping180_190 = 0.1848,
+        ping190_200 = 0.1865,
+    },
+    Key360 = {
+        Toggle = false,
+        RotationSpeed = 2500, -- higher you go the faster the spin. 2500 is good
+        Keybind = Enum.KeyCode.V
+    },
+}
+
+
+local function getnamecall()
+    if game.PlaceId == 2788229376 then
+        return "UpdateMousePos"
+    elseif game.PlaceId == 5602055394 or game.PlaceId == 7951883376 then
+        return "MousePos"
+    elseif game.PlaceId == 9825515356 then
+        return "GetMousePos"
+    end
+end
+
+local namecalltype = getnamecall()
+
+function MainEventLocate()
+    for _,v in pairs(game:GetService("ReplicatedStorage"):GetDescendants()) do
+        if v.Name == "MainEvent" then
+            return v
+        end
+    end
+end
+
+-- 360 on bind made by prime >_<
+local Players = game:GetService("Players")
+local UserInputService = game:GetService("UserInputService")
+local RunService = game:GetService("RunService")
+local Camera = workspace.CurrentCamera
+local Toggle = getgenv().DNS.Key360.Toggle
+local RotationSpeed = getgenv().DNS.Key360.RotationSpeed
+local Keybind = getgenv().DNS.Key360.Keybind
+
+local function OnKeyPress(Input, GameProcessedEvent)
+    if Input.KeyCode == Keybind and not GameProcessedEvent then 
+        Toggle = not Toggle
+    end
+end
+
+UserInputService.InputBegan:Connect(OnKeyPress)
+
+local LastRenderTime = 0
+local FullCircleRotation = 2 * math.pi
+local TotalRotation = 0
+
+local function RotateCamera()
+    if Toggle then
+        local CurrentTime = tick()
+        local TimeDelta = math.min(CurrentTime - LastRenderTime, 0.01)
+        LastRenderTime = CurrentTime
+
+        local Rotation = CFrame.fromAxisAngle(Vector3.new(0, 1, 0), math.rad(RotationSpeed * TimeDelta))
+        Camera.CFrame = Camera.CFrame * Rotation
+
+        TotalRotation = TotalRotation + math.rad(RotationSpeed * TimeDelta)
+        if TotalRotation >= FullCircleRotation then
+            Toggle = false
+            TotalRotation = 0
+        end
+    end
+end
+
+RunService.RenderStepped:Connect(RotateCamera)
+
+
+local mainevent = MainEventLocate()
+
+-- // Shorthand
+local uwuDNS = getgenv().DNS
+local uwuMain = uwuDNS.General
+local uwuCamMain = uwuDNS.Camlock.Main
+local uwuCamFOV = uwuDNS.Camlock.FOV
+local uwuSilentMain = uwuDNS.Silent.Main
+local uwuSilentFOV = uwuDNS.Silent.FOV
+local uwuTrace = uwuDNS.Tracer
+local uwuAutoPred = uwuDNS.AutoPrediction
+
+-- // Optimization
+local vect3 = Vector3.new
+local vect2 = Vector2.new
+local cnew = CFrame.new
+
+-- // Libraries
+local NotificationHolder = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Module.Lua"))()
+local Notification = loadstring(game:HttpGet("https://raw.githubusercontent.com/BocusLuke/UI/main/STX/Client.Lua"))()
+
+-- // Services
+local uis = game:GetService("UserInputService")
+local rs = game:GetService("RunService")
+local plrs = game:GetService("Players")
+local ws = game:GetService("Workspace")
+
+-- // Script Variables
+local CToggle = false
+local lplr = plrs.LocalPlayer
+local CTarget = nil
+local CPart = nil
+local SToggle = false
+local STarget = nil
+local SPart = nil
+
+-- // Client Variables
+local m = lplr:GetMouse()
+local c = ws.CurrentCamera
+
+-- // Notification Function
+local function SendNotification(text)
+    Notification:Notify(
+        {Title = "DNS Rewrite", Description = "pl#0001 - "..text},
+        {OutlineColor = Color3.fromRGB(50,76,110),Time = 2, Type = "image"},
+        {Image = "http://www.roblox.com/asset/?id=6023426923", ImageColor = Color3.fromRGB(50,76,110)}
+    )
+end 
+
+-- // Call notification function
+if uwuMain.Notifications then
+    SendNotification("pl#0001 - injecting DNS Rewrite")
+    wait(3.5)
+    SendNotification("pl#0001 - finished injecting DNS Rewrite")
+end
+
+-- // Camlock FOV
+local CamlockFOV = Drawing.new("Circle")
+CamlockFOV.Visible = uwuCamFOV.ShowFOV
+CamlockFOV.Thickness = 1
+CamlockFOV.NumSides = 30
+CamlockFOV.Radius = uwuCamFOV.Radius * 3
+CamlockFOV.Color = uwuCamFOV.Color
+CamlockFOV.Filled = uwuCamFOV.Filled
+CamlockFOV.Transparency = uwuCamFOV.Transparency
+
+--Silent FOV
+local SilentFOV = Drawing.new("Circle")
+SilentFOV.Visible = uwuSilentFOV.ShowFOV
+SilentFOV.Thickness = 1
+SilentFOV.NumSides = 30
+SilentFOV.Radius = uwuSilentFOV.Radius * 3
+SilentFOV.Color = uwuSilentFOV.Color
+SilentFOV.Filled = uwuSilentFOV.Filled
+SilentFOV.Transparency = uwuSilentFOV.Transparency
+
+--Tracer
+local Line = Drawing.new("Line")
+Line.Color = uwuTrace.Color
+Line.Transparency = uwuTrace.Transparency
+Line.Thickness = 1
+Line.Visible = uwuTrace.Visible
+
+-- // Script Functions
+local function uwuFindTawget() -- // Find target
+    local d, t = math.huge, nil
+    for _,v in pairs (plrs:GetPlayers()) do
+        local _,os = c:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+        if v ~= lplr and v.Character and v.Character:FindFirstChild("Humanoid") and v.Character.Humanoid.Health ~= 0 and v.Character:FindFirstChild("HumanoidRootPart") and os then
+            local pos = c:WorldToViewportPoint(v.Character.PrimaryPart.Position)
+            local magnitude = (vect2(pos.X, pos.Y) - vect2(m.X, m.Y + 36)).magnitude
+            if magnitude < d then
+                t = v
+                d = magnitude
+            end
+        end
+    end
+    return t
+end
+
+local function uwuFindPart() -- // Find aimpart
+    local d, p = math.huge, nil
+    if CTarget then
+        for _,v in pairs(CTarget.Character:GetChildren()) do
+            if table.find(uwuCamMain.Parts, v.Name) then
+                local pos = c:WorldToViewportPoint(v.Position)
+                local Magn = (vect2(m.X, m.Y + 36) - vect2(pos.X, pos.Y)).Magnitude
+                if Magn < d then
+                    d = Magn
+                    p = v
+                end
+            end
+        end
+        return p.Name
+    end
+end
+
+local function uwuFindSilentPart() -- // Find aimpart
+    local d, p = math.huge, nil
+    if CTarget then
+        for _,v in pairs(CTarget.Character:GetChildren()) do
+            if table.find(uwuSilentMain.Parts, v.Name) then
+                local pos = c:WorldToViewportPoint(v.Position)
+                local Magn = (vect2(m.X, m.Y + 36) - vect2(pos.X, pos.Y)).Magnitude
+                if Magn < d then
+                    d = Magn
+                    p = v
+                end
+            end
+        end
+        return p.Name
+    end
+end
+
+local function uwuCheckAnti(targ) -- // Anti-aim detection
+    if (targ.Character.HumanoidRootPart.Velocity.Y < -5 and targ.Character.Humanoid:GetState() ~= Enum.HumanoidStateType.Freefall) or targ.Character.HumanoidRootPart.Velocity.Y < -50 then
+        return true
+    elseif targ and (targ.Character.HumanoidRootPart.Velocity.X > 35 or targ.Character.HumanoidRootPart.Velocity.X < -35) then
+        return true
+    elseif targ and targ.Character.HumanoidRootPart.Velocity.Y > 60 then
+        return true
+    elseif targ and (targ.Character.HumanoidRootPart.Velocity.Z > 35 or targ.Character.HumanoidRootPart.Velocity.Z < -35) then
+        return true
+    else
+        return false
+    end
+end
+
+local function InSilentRadiuwus(target, section, fov) -- // Check if player is in the fov
+    if target then
+        local pos = nil
+        if not uwuCheckAnti(target) then
+            pos = c:WorldToViewportPoint(target.Character.PrimaryPart.Position + target.Character.PrimaryPart.Velocity * section.Prediction)
+        else
+            pos = c:WorldToViewportPoint(target.Character.PrimaryPart.Position + ((target.Character.Humanoid.MoveDirection * target.Character.Humanoid.WalkSpeed) * section.Prediction))
+        end
+        local mag = (vect2(m.X, m.Y + 36) - vect2(pos.X, pos.Y)).Magnitude
+        if mag < fov * 3 then
+            return true
+        else
+            return false
+        end
+    end
+end
+
+local function Silent()
+    if STarget then
+        if SPart and InSilentRadiuwus(STarget, uwuSilentMain, SilentFOV.Radius) then
+            if not uwuCheckAnti(STarget) then
+                mainevent:FireServer(namecalltype, STarget.Character[SPart].Position + (STarget.Character[SPart].Velocity * uwuSilentMain.Prediction))
+            else
+                mainevent:FireServer(namecalltype, STarget.Character[SPart].Position + ((STarget.Character.Humanoid.MoveDirection * STarget.Character.Humanoid.WalkSpeed) * uwuSilentMain.Prediction))
+            end
+        end
+    end
+end
+
+
+local function InRadiuwus(target, section, fov) -- // Check if player is in the fov
+    if target then
+        if uwuCamFOV.UseFOV then
+            local pos = nil
+            if not uwuCheckAnti(target) then
+                pos = c:WorldToViewportPoint(target.Character.PrimaryPart.Position + target.Character.PrimaryPart.Velocity * section.Prediction)
+            else
+                pos = c:WorldToViewportPoint(target.Character.PrimaryPart.Position + ((target.Character.Humanoid.MoveDirection * target.Character.Humanoid.WalkSpeed) * section.Prediction))
+            end
+            local mag = (vect2(m.X, m.Y + 36) - vect2(pos.X, pos.Y)).Magnitude
+            if mag < fov * 3 then
+                return true
+            else
+                return false
+            end
+        else
+            return true
+        end
+    end
+end
+
+uis.InputBegan:Connect(function(k,t)
+    if not t then
+        if k.KeyCode == Enum.KeyCode[uwuCamMain.Key:upper()] then
+            CToggle = true
+            CTarget = uwuFindTawget()
+            if uwuMain.Notifications then
+                SendNotification("locked onto "..CTarget.Name)
+            end
+        elseif k.KeyCode == Enum.KeyCode[uwuCamMain.UnlockKey:upper()] then
+            if CToggle then
+                CToggle = false
+                CTarget = nil
+                if uwuMain.Notifications then
+                    SendNotification("unlocked")
+                end
+            end
+        elseif k.KeyCode == Enum.KeyCode[uwuSilentMain.Toggle:upper()] and uwuSilentMain == "Regular" then
+            if SToggle then
+                SToggle = false
+                if uwuMain.Notifications then
+                    SendNotification("silent disabled")
+                end
+            else
+                SToggle = true
+                if uwuMain.Notifications then
+                    SendNotification("silent enabled")
+                end
+            end
+        end
+    end
+end)
+
+rs.RenderStepped:Connect(function()
+    if CTarget then
+        CPart = uwuFindPart()
+        local pos = nil
+        local cum = nil
+        if CTarget.Character.BodyEffects["K.O"].Value == true or lplr.Character.BodyEffects["K.O"].Value == true then
+            CToggle = false
+            CTarget = nil
+        else
+            if uwuCamMain.Shake then
+                if uwuCamMain.PredictMovement then
+                    if not uwuCheckAnti(CTarget) then
+                        cum = CTarget.Character[CPart].Position + CTarget.Character[CPart].Velocity * uwuCamMain.Prediction + (vect3(
+                            math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue),
+                            math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue),
+                            math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue)
+                        ) * 0.1)
+                    else
+                        cum = CTarget.Character[CPart].Position + ((CTarget.Character.Humanoid.MoveDirection * CTarget.Character.Humanoid.WalkSpeed) * uwuCamMain.Prediction + (vect3(
+                            math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue),
+                            math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue),
+                            math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue)
+                        ) * 0.1))
+                    end
+                    pos = c:WorldToViewportPoint(cum)
+                else
+                    cum = CTarget.Character[CPart].Position + (vect3(
+                        math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue),
+                        math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue),
+                        math.random(-uwuCamMain.ShakeValue, uwuCamMain.ShakeValue)
+                    ) * 0.1)
+                    pos = c:WorldToViewportPoint(cum)
+                end
+            else
+                if uwuCamMain.PredictMovement then
+                    if not uwuCheckAnti(CTarget) then
+                        cum = CTarget.Character[CPart].Position + CTarget.Character[CPart].Velocity * uwuCamMain.Prediction
+                    else
+                        cum = CTarget.Character[CPart].Position + ((CTarget.Character.Humanoid.MoveDirection * CTarget.Character.Humanoid.WalkSpeed) * uwuCamMain.Prediction)
+                    end
+                    pos = c:WorldToViewportPoint(cum)
+                else
+                    cum = CTarget.Character[CPart].Position
+                    pos = c:WorldToViewportPoint(cum)
+                end
+            end
+            if InRadiuwus(CTarget, uwuCamMain, CamlockFOV.Radius) then
+                local main = nil
+                if uwuCamMain.SmoothLock then
+                    main = cnew(c.CFrame.p, cum)
+                    c.CFrame = c.CFrame:Lerp(main, uwuCamMain.Smoothness, Enum.EasingStyle.Sine, Enum.EasingDirection.InOut)
+                else
+                    c.CFrame = cnew(c.CFrame.p, cum)
+                end
+            end
+            if uwuMain.FOVMode == "Mouse" then
+                if uwuCamFOV.ShowFOV then
+                    CamlockFOV.Position = vect2(m.X, m.Y + 36)
+                end
+                if uwuSilentFOV.ShowFOV then
+                    SilentFOV.Position = vect2(m.X, m.Y + 36)
+                end
+            elseif uwuMain.FOVMode == "PredictionPoint" then
+                if uwuCamFOV.ShowFOV then
+                    CamlockFOV.Position = vect2(pos.X, pos.Y)
+                end
+                if uwuSilentFOV.ShowFOV then
+                    SilentFOV.Position = vect2(pos.X, pos.Y)
+                end
+            end
+            if uwuTrace.Enabled then
+                Line.Visible = true
+                Line.From = vect2(m.X, m.Y + 36)
+                Line.To = vect2(pos.X, pos.Y)
+            end
+        end
+    else
+        CamlockFOV.Position = vect2(m.X, m.Y + 36)
+        SilentFOV.Position = vect2(m.X, m.Y + 36)
+        Line.Visible = false
+    end
+end)
+
+lplr.Character.ChildAdded:Connect(function(tool)
+    if tool:IsA("Tool") then
+        tool.Activated:connect(function()
+            if uwuSilentMain.Mode == "Regular" then
+                if SToggle then
+                    STarget = uwuFindTawget()
+                    if STarget then
+                        SPart = uwuFindSilentPart()
+                        if SPart then
+                            Silent()
+                        end
+                    end
+                end
+            elseif uwuSilentMain.Mode == "Target" then
+                if CToggle then
+                    STarget = CTarget
+                    if STarget then
+                        SPart = uwuFindSilentPart()
+                        if SPart then
+                            Silent()
+                        end
+                    end
+                end
+            end
+        end)
+    end
+end)
+
+lplr.CharacterAdded:Connect(function(char)
+    char.ChildAdded:Connect(function(tool)
+        tool.Activated:connect(function()
+            if uwuSilentMain.Mode == "Regular" then
+                if SToggle then
+                    STarget = uwuFindTawget()
+                    if STarget then
+                        SPart = uwuFindSilentPart()
+                        if SPart then
+                            Silent()
+                        end
+                    end
+                end
+            elseif uwuSilentMain.Mode == "Target" then
+                if CToggle then
+                    STarget = CTarget
+                    if STarget then
+                        SPart = uwuFindSilentPart()
+                        if SPart then
+                            Silent()
+                        end
+                    end
+                end
+            end
+        end)
+    end)
+end)
+
+--Auto Prediction
+coroutine.resume(coroutine.create(function()
+    while true do
+        if uwuAutoPred.Enabled then
+            local ping = game:GetService("Stats").Network.ServerStatsItem["Data Ping"]:GetValue()
+            if ping <= 40 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping30_40
+            elseif ping <= 50 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping40_50
+            elseif ping <= 60 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping50_60
+            elseif ping <= 70 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping60_70
+            elseif ping <= 80 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping70_80
+            elseif ping <= 90 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping80_90
+            elseif ping <= 100 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping90_100
+            elseif ping <= 110 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping100_110
+            elseif ping <= 120 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping110_120
+            elseif ping <= 130 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping120_130
+            elseif ping <= 140 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping130_140
+            elseif ping <= 150 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping140_150
+            elseif ping <= 160 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping150_160
+            elseif ping <= 170 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping160_170
+            elseif ping <= 180 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping170_180
+            elseif ping <= 190 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping180_190
+            elseif ping <= 200 then
+                uwuSilentMain.Prediction = uwuAutoPred.ping190_200
+            end
+            task.wait(0.7)
+        end
+    end
+end))
+   end,
+})
+
+local Button = DaHoodTab:CreateButton({
+   Name = "Agent",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/mrhackerman35297/AgentCC/main/Launch.lua"))()
+   end,
+})
+
+local Button = DaHoodTab:CreateButton({
+   Name = "Swag Mode",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagModeV002'))()
+   end,
+})
+
+local Button = DaHoodTab:CreateButton({
+   Name = "Swag Mode",
+   Callback = function()
+loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagModeV002'))()
+   end,
+})
+
+local Button = DaHoodTab:CreateButton({
+   Name = "Zinc Hub",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/Zinzs/luascripting/main/canyoutellitsadahoodscriptornot.lua"))()
+   end,
+})
+
+local Button = DaHoodTab:CreateButton({
+   Name = "Animation, Animation ++",
+   Callback = function()
+-- Credit for Zackary#1011 for making animation pack/++
+-- and credit for ilovebee#6666 for giving animations id
+
+repeat
+    wait()
+until game:IsLoaded() and game.Players.LocalPlayer.Character:FindFirstChild("FULLY_LOADED_CHAR") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPack") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPlusPack")
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Lean") then
+    game.ReplicatedStorage.ClientAnimations.Lean:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Lay") then
+    game.ReplicatedStorage.ClientAnimations.Lay:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Dance1") then
+    game.ReplicatedStorage.ClientAnimations.Dance1:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Dance2") then
+    game.ReplicatedStorage.ClientAnimations.Dance2:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Greet") then
+    game.ReplicatedStorage.ClientAnimations.Greet:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Chest Pump") then
+    game.ReplicatedStorage.ClientAnimations["Chest Pump"]:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Praying") then
+    game.ReplicatedStorage.ClientAnimations.Praying:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("TheDefault") then
+    game.ReplicatedStorage.ClientAnimations.TheDefault:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Sturdy") then
+    game.ReplicatedStorage.ClientAnimations.Sturdy:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Rossy") then
+    game.ReplicatedStorage.ClientAnimations.Rossy:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Griddy") then
+    game.ReplicatedStorage.ClientAnimations.Griddy:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("TPose") then
+    game.ReplicatedStorage.ClientAnimations.TPose:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("SpeedBlitz") then
+    game.ReplicatedStorage.ClientAnimations.SpeedBlitz:Destroy()
+end
+
+local Animations = game.ReplicatedStorage.ClientAnimations
+
+local LeanAnimation = Instance.new("Animation", Animations)
+LeanAnimation.Name = "Lean"
+LeanAnimation.AnimationId = "rbxassetid://3152375249"
+
+local LayAnimation = Instance.new("Animation", Animations)
+LayAnimation.Name = "Lay"
+LayAnimation.AnimationId = "rbxassetid://3152378852"
+
+local Dance1Animation = Instance.new("Animation", Animations)
+Dance1Animation.Name = "Dance1"
+Dance1Animation.AnimationId = "rbxassetid://3189773368"
+
+local Dance2Animation = Instance.new("Animation", Animations)
+Dance2Animation.Name = "Dance2"
+Dance2Animation.AnimationId = "rbxassetid://3189776546"
+
+local GreetAnimation = Instance.new("Animation", Animations)
+GreetAnimation.Name = "Greet"
+GreetAnimation.AnimationId = "rbxassetid://3189777795"
+
+local ChestPumpAnimation = Instance.new("Animation", Animations)
+ChestPumpAnimation.Name = "Chest Pump"
+ChestPumpAnimation.AnimationId = "rbxassetid://3189779152"
+
+local PrayingAnimation = Instance.new("Animation", Animations)
+PrayingAnimation.Name = "Praying"
+PrayingAnimation.AnimationId = "rbxassetid://3487719500"
+
+local TheDefaultAnimation = Instance.new("Animation", Animations)
+TheDefaultAnimation.Name = "TheDefault"
+TheDefaultAnimation.AnimationId = "rbxassetid://11710529975" -- FIX THIS
+
+local SturdyAnimation = Instance.new("Animation", Animations)
+SturdyAnimation.Name = "Sturdy"
+SturdyAnimation.AnimationId = "rbxassetid://11710524717"
+
+local RossyAnimation = Instance.new("Animation", Animations)
+RossyAnimation.Name = "Rossy"
+RossyAnimation.AnimationId = "rbxassetid://11710527244"
+
+local GriddyAnimation = Instance.new("Animation", Animations)
+GriddyAnimation.Name = "Griddy"
+GriddyAnimation.AnimationId = "rbxassetid://11710529220"
+
+local TPoseAnimation = Instance.new("Animation", Animations)
+TPoseAnimation.Name = "TPose"
+TPoseAnimation.AnimationId = "rbxassetid://11710524200"
+
+local SpeedBlitzAnimation = Instance.new("Animation", Animations)
+SpeedBlitzAnimation.Name = "SpeedBlitz"
+SpeedBlitzAnimation.AnimationId = "rbxassetid://11710541744"
+
+function AnimationPack(Character)
+    Character:WaitForChild'Humanoid'
+    repeat
+        wait()
+    until game.Players.LocalPlayer.Character:FindFirstChild("FULLY_LOADED_CHAR") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPack") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPlusPack")
+
+    local AnimationPack = game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.AnimationPack
+    local AnimationPackPlus = game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.AnimationPlusPack
+    local ScrollingFrame = AnimationPack.ScrollingFrame
+    local CloseButton = AnimationPack.CloseButton
+    local ScrollingFramePlus = AnimationPackPlus.ScrollingFrame
+    local CloseButtonPlus = AnimationPackPlus.CloseButton
+
+    local Lean = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(LeanAnimation)
+
+    local Lay = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(LayAnimation)
+
+    local Dance1 = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Dance1Animation)
+
+    local Dance2 = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Dance2Animation)
+
+    local Greet = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(GreetAnimation)
+
+    local ChestPump = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(ChestPumpAnimation)
+
+    local Praying = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(PrayingAnimation)
+
+    local TheDefault = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(TheDefaultAnimation)
+
+    local Sturdy = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(SturdyAnimation)
+
+    local Rossy = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(RossyAnimation)
+
+    local Griddy = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(GriddyAnimation)
+
+    local TPose = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(TPoseAnimation)
+
+    local SpeedBlitz = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(SpeedBlitzAnimation)
+
+    AnimationPack.Visible = true
+
+    AnimationPackPlus.Visible = true
+
+    ScrollingFrame.UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+    ScrollingFramePlus.UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Lean" then
+                v.Name = "LeanButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Lay" then
+                v.Name = "LayButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Dance1" then
+                v.Name = "Dance1Button"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Dance2" then
+                v.Name = "Dance2Button"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Greet" then
+                v.Name = "GreetButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Chest Pump" then
+                v.Name = "ChestPumpButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Praying" then
+                v.Name = "PrayingButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "The Default" then
+                v.Name = "TheDefaultButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Sturdy" then
+                v.Name = "SturdyButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Rossy" then
+                v.Name = "RossyButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Griddy" then
+                v.Name = "GriddyButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "T Pose" then
+                v.Name = "TPoseButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Speed Blitz" then
+                v.Name = "SpeedBlitzButton"
+            end
+        end
+    end
+
+    function Stop()
+        Lean:Stop()
+        Lay:Stop()
+        Dance1:Stop()
+        Dance2:Stop()
+        Greet:Stop()
+        ChestPump:Stop()
+        Praying:Stop()
+        TheDefault:Stop()
+        Sturdy:Stop()
+        Rossy:Stop()
+        Griddy:Stop()
+        TPose:Stop()
+        SpeedBlitz:Stop()
+    end
+
+    --credit Zackary#1011 (again cuz someone might skid this to their script)
+
+    local LeanTextButton = ScrollingFrame.LeanButton
+    local LayTextButton = ScrollingFrame.LayButton
+    local Dance1TextButton = ScrollingFrame.Dance1Button
+    local Dance2TextButton = ScrollingFrame.Dance2Button
+    local GreetTextButton = ScrollingFrame.GreetButton
+    local ChestPumpTextButton = ScrollingFrame.ChestPumpButton
+    local PrayingTextButton = ScrollingFrame.PrayingButton
+    local TheDefaultTextButton = ScrollingFramePlus.TheDefaultButton
+    local SturdyTextButton = ScrollingFramePlus.SturdyButton
+    local RossyTextButton = ScrollingFramePlus.RossyButton
+    local GriddyTextButton = ScrollingFramePlus.GriddyButton
+    local TPoseTextButton = ScrollingFramePlus.TPoseButton
+    local SpeedBlitzTextButton = ScrollingFramePlus.SpeedBlitzButton
+
+    AnimationPack.MouseButton1Click:Connect(function()
+        if ScrollingFrame.Visible == false then
+            ScrollingFrame.Visible = true
+            CloseButton.Visible = true
+            AnimationPackPlus.Visible = false
+        end
+    end)
+    AnimationPackPlus.MouseButton1Click:Connect(function()
+        if ScrollingFramePlus.Visible == false then
+            ScrollingFramePlus.Visible = true
+            CloseButtonPlus.Visible = true
+            AnimationPack.Visible = false
+        end
+    end)
+    CloseButton.MouseButton1Click:Connect(function()
+        if ScrollingFrame.Visible == true then
+            ScrollingFrame.Visible = false
+            CloseButton.Visible = false
+            AnimationPackPlus.Visible = true
+        end
+    end)
+    CloseButtonPlus.MouseButton1Click:Connect(function()
+        if ScrollingFramePlus.Visible == true then
+            ScrollingFramePlus.Visible = false
+            CloseButtonPlus.Visible = false
+            AnimationPack.Visible = true
+        end
+    end)
+
+    LeanTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Lean:Play()
+    end)
+    LayTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Lay:Play()
+    end)
+    Dance1TextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Dance1:Play()
+    end)
+    Dance2TextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Dance2:Play()
+    end)
+    GreetTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Greet:Play()
+    end)
+    ChestPumpTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        ChestPump:Play()
+    end)
+    PrayingTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Praying:Play()
+    end)
+    TheDefaultTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        TheDefault:Play()
+    end)
+    SturdyTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Sturdy:Play()
+    end)
+    RossyTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Rossy:Play()
+    end)
+    GriddyTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Griddy:Play()
+    end)
+    TPoseTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        TPose:Play()
+    end)
+    SpeedBlitzTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        SpeedBlitz:Play()
+    end)
+
+    game:GetService("Players").LocalPlayer.Character.Humanoid.Running:Connect(function()
+        Stop()
+    end)
+
+    game:GetService("Players").LocalPlayer.CharacterAdded:Connect(function()
+        Stop()
+    end)
+end
+AnimationPack(game.Players.LocalPlayer.Character)
+game.Players.LocalPlayer.CharacterAdded:Connect(AnimationPack)
+   end,
+})
+
+local Button = DaHoodTab:CreateButton({
+   Name = "Zombie Animation",
+   Callback = function()
+while true do
+local Animate = game.Players.LocalPlayer.Character.Animate
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+game.Players.LocalPlayer.Character.Humanoid.Jump = false
+wait(1)
+end
+end,
+})
+
+local MyTab = Window:CreateTab("Other Scripts by GHOST", nil) -- Title, Image
+local MySection = MyTab:CreateSection("Scripts/GUI")
+
+local Button = MyTab:CreateButton({
+   Name = "Private Hub",
+   Callback = function()
+--[[
+	WARNING: Heads up! This script has not been verified by ScriptBlox. Use at your own risk!
+]]
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+
+local Window = Library.CreateLib("Private HUB", "GrapeTheme")
+
+local MainTab = Window:NewTab("Main")
+local MainSection = MainTab:NewSection("Main Scripts")
+
+MainSection:NewButton("Infinite Yield", "Universal admin working for every game", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/EdgeIY/infiniteyield/master/source"))()
+end)
+
+MainSection:NewButton("Fly", "Universal fly working for every game", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/XNEOFF/FlyGuiV3/main/FlyGuiV3.txt"))()
+end)
+
+MainSection:NewButton("Infinite Jump", "Universal infinite jump working for every game", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/V3DKCQTT"))()
+end)
+
+MainSection:NewButton("Speed Changer", "A gui made for changing your character's speed", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/A5EjZHLf"))()
+end)
+
+MainSection:NewButton("Invisible", "Universal invisibilty that can used to troll your friends", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Bebo-Mods/BeboScripts/main/UniversalInvis.lua", true))()
+end)
+
+MainSection:NewButton("Universal Aimbot", "Universal aimbot working for every game", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+end)
+
+MainSection:NewButton("Universal Silent Aim", "Universal silent aim working for every game", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Averiias/Universal-SilentAim/main/main.lua"))()
+end)
+
+MainSection:NewButton("Universal ESP", "Universal ESP working for every game", function()
+    loadstring(game:Httpget("https://raw.githubusercontent.com/Exunys/ESP-Script/main/ESP.lua"))()
+end)
+
+local ArsenalTab = Window:NewTab("Arsenal🔫")
+local ArsenalSection = ArsenalTab:NewSection("Arsenal GUI/SCRIPTS")
+
+
+ArsenalSection:NewButton("Aimbot", "Universal aimbot, working on every game", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Exunys/AirHub/main/AirHub.lua"))()
+end)
+
+ArsenalSection:NewButton("Cracked", "An arsenal gui, use this with aimbot", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/ccxmIcal/cracks/main/strikehub.lua"))()
+end)
+
+ArsenalSection:NewButton("HitBox Expander", "An arsenal hitbox expander, it expands the hit range, so it's not only based off the hack, but also based off your skill", function()
+    loadstring(game:Httpget("https://pastebin.com/76kTaJ65"))()
+end)
+
+local DaHoodTab = Window:NewTab("Da Hood🔫")
+local DHSection = DaHoodTab:NewSection("Da Hood Scripts")
+
+DHSection:NewButton("Aimlock", "One of the best da hood aimlock it also works on any da hood game, like Da Hood Aim Trainer, del Hood, Hood Customs etc...", function()
+    loadstring(get:HttpGet("https://pastebin.com/raw/Q4AxsiJ9"))()
+end)
+
+DHSection:NewButton("Ray-X", "A normal roblox dahood GUI", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/SpaceYes/Lua/Main/DaHood.Lua'))()
+end)
+
+DHSection:NewButton("Agent", "A normal roblox dahood GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/mrhackerman35297/AgentCC/main/Launch.lua"))()
+end)
+
+DHSection:NewButton("Swag Mode", "A normal roblox dahood GUI", function()
+    loadstring(game:HttpGet('https://raw.githubusercontent.com/lerkermer/lua-projects/master/SwagModeV002'))()
+end)
+
+DHSection:NewButton("Nyula", "A normal roblox dahood GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/nyulachan/nyula/main/nyulauh"))();
+end)
+
+DHSection:NewButton("Zinc", "A normal roblox dahood GUI", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/Zinzs/luascripting/main/canyoutellitsadahoodscriptornot.lua"))()
+end)
+
+DHSection:NewButton("Zombie Animation", "DaHood has a sweaty animation, and it's a zombie animation, use this, also this is FE and it doesn't look like a fake animation, it looks like a real one", function()
+    while true do
+local Animate = game.Players.LocalPlayer.Character.Animate
+Animate.run.RunAnim.AnimationId = "http://www.roblox.com/asset/?id=616163682"
+game.Players.LocalPlayer.Character.Humanoid.Jump = false
+wait(1)
+end
+end)
+
+DHSection:NewButton("Animation and Animation ++", "DaHood's Animation", function()
+repeat
+    wait()
+until game:IsLoaded() and game.Players.LocalPlayer.Character:FindFirstChild("FULLY_LOADED_CHAR") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPack") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPlusPack")
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Lean") then
+    game.ReplicatedStorage.ClientAnimations.Lean:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Lay") then
+    game.ReplicatedStorage.ClientAnimations.Lay:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Dance1") then
+    game.ReplicatedStorage.ClientAnimations.Dance1:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Dance2") then
+    game.ReplicatedStorage.ClientAnimations.Dance2:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Greet") then
+    game.ReplicatedStorage.ClientAnimations.Greet:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Chest Pump") then
+    game.ReplicatedStorage.ClientAnimations["Chest Pump"]:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Praying") then
+    game.ReplicatedStorage.ClientAnimations.Praying:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("TheDefault") then
+    game.ReplicatedStorage.ClientAnimations.TheDefault:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Sturdy") then
+    game.ReplicatedStorage.ClientAnimations.Sturdy:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Rossy") then
+    game.ReplicatedStorage.ClientAnimations.Rossy:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("Griddy") then
+    game.ReplicatedStorage.ClientAnimations.Griddy:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("TPose") then
+    game.ReplicatedStorage.ClientAnimations.TPose:Destroy()
+end
+
+if game.ReplicatedStorage.ClientAnimations:FindFirstChild("SpeedBlitz") then
+    game.ReplicatedStorage.ClientAnimations.SpeedBlitz:Destroy()
+end
+
+local Animations = game.ReplicatedStorage.ClientAnimations
+
+local LeanAnimation = Instance.new("Animation", Animations)
+LeanAnimation.Name = "Lean"
+LeanAnimation.AnimationId = "rbxassetid://3152375249"
+
+local LayAnimation = Instance.new("Animation", Animations)
+LayAnimation.Name = "Lay"
+LayAnimation.AnimationId = "rbxassetid://3152378852"
+
+local Dance1Animation = Instance.new("Animation", Animations)
+Dance1Animation.Name = "Dance1"
+Dance1Animation.AnimationId = "rbxassetid://3189773368"
+
+local Dance2Animation = Instance.new("Animation", Animations)
+Dance2Animation.Name = "Dance2"
+Dance2Animation.AnimationId = "rbxassetid://3189776546"
+
+local GreetAnimation = Instance.new("Animation", Animations)
+GreetAnimation.Name = "Greet"
+GreetAnimation.AnimationId = "rbxassetid://3189777795"
+
+local ChestPumpAnimation = Instance.new("Animation", Animations)
+ChestPumpAnimation.Name = "Chest Pump"
+ChestPumpAnimation.AnimationId = "rbxassetid://3189779152"
+
+local PrayingAnimation = Instance.new("Animation", Animations)
+PrayingAnimation.Name = "Praying"
+PrayingAnimation.AnimationId = "rbxassetid://3487719500"
+
+local TheDefaultAnimation = Instance.new("Animation", Animations)
+TheDefaultAnimation.Name = "TheDefault"
+TheDefaultAnimation.AnimationId = "rbxassetid://11710529975" -- FIX THIS
+
+local SturdyAnimation = Instance.new("Animation", Animations)
+SturdyAnimation.Name = "Sturdy"
+SturdyAnimation.AnimationId = "rbxassetid://11710524717"
+
+local RossyAnimation = Instance.new("Animation", Animations)
+RossyAnimation.Name = "Rossy"
+RossyAnimation.AnimationId = "rbxassetid://11710527244"
+
+local GriddyAnimation = Instance.new("Animation", Animations)
+GriddyAnimation.Name = "Griddy"
+GriddyAnimation.AnimationId = "rbxassetid://11710529220"
+
+local TPoseAnimation = Instance.new("Animation", Animations)
+TPoseAnimation.Name = "TPose"
+TPoseAnimation.AnimationId = "rbxassetid://11710524200"
+
+local SpeedBlitzAnimation = Instance.new("Animation", Animations)
+SpeedBlitzAnimation.Name = "SpeedBlitz"
+SpeedBlitzAnimation.AnimationId = "rbxassetid://11710541744"
+
+function AnimationPack(Character)
+    Character:WaitForChild'Humanoid'
+    repeat
+        wait()
+    until game.Players.LocalPlayer.Character:FindFirstChild("FULLY_LOADED_CHAR") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPack") and game.Players.LocalPlayer.PlayerGui.MainScreenGui:FindFirstChild("AnimationPlusPack")
+
+    local AnimationPack = game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.AnimationPack
+    local AnimationPackPlus = game:GetService("Players").LocalPlayer.PlayerGui.MainScreenGui.AnimationPlusPack
+    local ScrollingFrame = AnimationPack.ScrollingFrame
+    local CloseButton = AnimationPack.CloseButton
+    local ScrollingFramePlus = AnimationPackPlus.ScrollingFrame
+    local CloseButtonPlus = AnimationPackPlus.CloseButton
+
+    local Lean = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(LeanAnimation)
+
+    local Lay = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(LayAnimation)
+
+    local Dance1 = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Dance1Animation)
+
+    local Dance2 = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(Dance2Animation)
+
+    local Greet = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(GreetAnimation)
+
+    local ChestPump = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(ChestPumpAnimation)
+
+    local Praying = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(PrayingAnimation)
+
+    local TheDefault = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(TheDefaultAnimation)
+
+    local Sturdy = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(SturdyAnimation)
+
+    local Rossy = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(RossyAnimation)
+
+    local Griddy = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(GriddyAnimation)
+
+    local TPose = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(TPoseAnimation)
+
+    local SpeedBlitz = game:GetService("Players").LocalPlayer.Character.Humanoid:LoadAnimation(SpeedBlitzAnimation)
+
+    AnimationPack.Visible = true
+
+    AnimationPackPlus.Visible = true
+
+    ScrollingFrame.UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+    ScrollingFramePlus.UIListLayout.SortOrder = Enum.SortOrder.LayoutOrder
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Lean" then
+                v.Name = "LeanButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Lay" then
+                v.Name = "LayButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Dance1" then
+                v.Name = "Dance1Button"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Dance2" then
+                v.Name = "Dance2Button"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Greet" then
+                v.Name = "GreetButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Chest Pump" then
+                v.Name = "ChestPumpButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFrame:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Praying" then
+                v.Name = "PrayingButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "The Default" then
+                v.Name = "TheDefaultButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Sturdy" then
+                v.Name = "SturdyButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Rossy" then
+                v.Name = "RossyButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Griddy" then
+                v.Name = "GriddyButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "T Pose" then
+                v.Name = "TPoseButton"
+            end
+        end
+    end
+
+    for i,v in pairs(ScrollingFramePlus:GetChildren()) do
+        if v.Name == "TextButton" then
+            if v.Text == "Speed Blitz" then
+                v.Name = "SpeedBlitzButton"
+            end
+        end
+    end
+
+    function Stop()
+        Lean:Stop()
+        Lay:Stop()
+        Dance1:Stop()
+        Dance2:Stop()
+        Greet:Stop()
+        ChestPump:Stop()
+        Praying:Stop()
+        TheDefault:Stop()
+        Sturdy:Stop()
+        Rossy:Stop()
+        Griddy:Stop()
+        TPose:Stop()
+        SpeedBlitz:Stop()
+    end
+
+    --credit Zackary#1011 (again cuz someone might skid this to their script)
+
+    local LeanTextButton = ScrollingFrame.LeanButton
+    local LayTextButton = ScrollingFrame.LayButton
+    local Dance1TextButton = ScrollingFrame.Dance1Button
+    local Dance2TextButton = ScrollingFrame.Dance2Button
+    local GreetTextButton = ScrollingFrame.GreetButton
+    local ChestPumpTextButton = ScrollingFrame.ChestPumpButton
+    local PrayingTextButton = ScrollingFrame.PrayingButton
+    local TheDefaultTextButton = ScrollingFramePlus.TheDefaultButton
+    local SturdyTextButton = ScrollingFramePlus.SturdyButton
+    local RossyTextButton = ScrollingFramePlus.RossyButton
+    local GriddyTextButton = ScrollingFramePlus.GriddyButton
+    local TPoseTextButton = ScrollingFramePlus.TPoseButton
+    local SpeedBlitzTextButton = ScrollingFramePlus.SpeedBlitzButton
+
+    AnimationPack.MouseButton1Click:Connect(function()
+        if ScrollingFrame.Visible == false then
+            ScrollingFrame.Visible = true
+            CloseButton.Visible = true
+            AnimationPackPlus.Visible = false
+        end
+    end)
+    AnimationPackPlus.MouseButton1Click:Connect(function()
+        if ScrollingFramePlus.Visible == false then
+            ScrollingFramePlus.Visible = true
+            CloseButtonPlus.Visible = true
+            AnimationPack.Visible = false
+        end
+    end)
+    CloseButton.MouseButton1Click:Connect(function()
+        if ScrollingFrame.Visible == true then
+            ScrollingFrame.Visible = false
+            CloseButton.Visible = false
+            AnimationPackPlus.Visible = true
+        end
+    end)
+    CloseButtonPlus.MouseButton1Click:Connect(function()
+        if ScrollingFramePlus.Visible == true then
+            ScrollingFramePlus.Visible = false
+            CloseButtonPlus.Visible = false
+            AnimationPack.Visible = true
+        end
+    end)
+
+    LeanTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Lean:Play()
+    end)
+    LayTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Lay:Play()
+    end)
+    Dance1TextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Dance1:Play()
+    end)
+    Dance2TextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Dance2:Play()
+    end)
+    GreetTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Greet:Play()
+    end)
+    ChestPumpTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        ChestPump:Play()
+    end)
+    PrayingTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Praying:Play()
+    end)
+    TheDefaultTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        TheDefault:Play()
+    end)
+    SturdyTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Sturdy:Play()
+    end)
+    RossyTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Rossy:Play()
+    end)
+    GriddyTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        Griddy:Play()
+    end)
+    TPoseTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        TPose:Play()
+    end)
+    SpeedBlitzTextButton.MouseButton1Click:Connect(function()
+        Stop()
+        SpeedBlitz:Play()
+    end)
+
+    game:GetService("Players").LocalPlayer.Character.Humanoid.Running:Connect(function()
+        Stop()
+    end)
+
+    game:GetService("Players").LocalPlayer.CharacterAdded:Connect(function()
+        Stop()
+    end)
+end
+AnimationPack(game.Players.LocalPlayer.Character)
+game.Players.LocalPlayer.CharacterAdded:Connect(AnimationPack)
+end)
+
+local BigPaintballTab = Window:NewTab("Big Paintball🔫")
+local BigPaintballSection = BigPaintballTab:NewSection("Big Paintball GUI/SCRIPTS")
+
+BigPaintballSection:NewButton("Big Paintball GUI 1", "One of the GUI'S for big paintball", function()
+    loadstring(game:HttpGet("https://www.pastebin.com/raw/PuaaGKsT"))()
+end)
+
+BigPaintballSection:NewButton("Big Paintball GUI 2", "One of the GUI'S for big paintball", function()
+    local a="https://eternityhub.xyz/Script"local b=a.."/Eternity.lua"loadstring(game:HttpGet(b))()
+end)
+
+BigPaintballSection:NewButton("Big Paintball GUI 3 (It may or may not work)", "One of the GUI'S for big paintball", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/iNEXT/main/source"))()
+end)
+
+BigPaintballSection:NewButton("Big Paintball GUI 4", "One of the GUI'S for big paintball", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/LeakMaster/Dark-Hub-V4.1/main/Big_Paintball.lua"))()
+end)
+
+BigPaintballSection:NewButton("Big Paintball GUI 5", "One of the GUI'S for big paintball", function()
+    loadstring(game:HttpGet("https://pastebin.com/raw/277nFR5C"))()
+end)
+
+BigPaintballSection:NewButton("Big Paintball GUI 6", "One of the GUI'S for big paintball", function()
+    -- Setting it to false will kill you. This is because dying resets the invisibility
+    getgenv().Enabled = true
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/WetCheezit/Releases/main/Big-Paintball/KillAll.lua"))()
+end)
+
+BigPaintballSection:NewButton("Big Paintball GUI 7", "One of the GUI'S for big paintball", function()
+    loadstring(game:HttpGet("https://raw.githubusercontent.com/radjahfromdiscord/iNEXT/main/source"))()
+end)
+
+local ServerTab = Window:NewTab("Server")
+local ServerSection = ServerTab:NewSection("Server Tab")
+
+ServerSection:NewButton("Rejoin", "Makes you rejoin the server you are currently in", function()
+    game:GetService("TeleportService"):Teleport(game.PlaceId, game:GetService("Players").LocalPlayer)
+end)
+
+ServerSection:NewButton("Server Hop", "Makes you join another server", function()
+    local module = loadstring(game:HttpGet"https://raw.githubusercontent.com/LeoKholYt/roblox/main/lk_serverhop.lua")()
+
+module:Teleport(game.PlaceId)
+end)
+
+ServerSection:NewButton("Join Smallest Server", "Makes you join a server with a low amount of people", function()
+    local Http = game:GetService("HttpService")
+local TPS = game:GetService("TeleportService")
+local Api = "https://games.roblox.com/v1/games/"
+
+local _place = game.PlaceId
+local _servers = Api.._place.."/servers/Public?sortOrder=Asc&limit=100"
+function ListServers(cursor)
+   local Raw = game:HttpGet(_servers .. ((cursor and "&cursor="..cursor) or ""))
+   return Http:JSONDecode(Raw)
+end
+
+local Server, Next; repeat
+   local Servers = ListServers(Next)
+   Server = Servers.data[1]
+   Next = Servers.nextPageCursor
+until Server
+
+TPS:TeleportToPlaceInstance(_place,Server.id,game.Players.LocalPlayer)
+end)
+
+local CreditTab = Window:NewTab("Credits")
+local CreditSection = CreditTab:NewSection("Credits:")
+
+CreditSection:NewLabel("Main Account: GDoggs_Ghost (lorenzoklaf)")
+CreditSection:NewLabel("Old Alt Account: StRuCidORFoRtNiTE71 (BANNED)")
+CreditSection:NewLabel("Current Alt Account: ghxst (badasser462)")
+
+local HubTab = Window:NewTab("Hubs")
+local HubSection = HubTab:NewSection("Other Hubs")
+
+HubSection:NewButton("unfair Hub", "1 of THE most known hubs, with really good scripts", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/rblxscriptsnet/unfair/main/rblxhub.lua'),true))()
+end)
+
+HubSection:NewButton("Ez Hub", "1 of THE most known hubs, with really good scripts", function()
+    loadstring(game:HttpGet(('https://raw.githubusercontent.com/debug420/Ez-Industries-Launcher-Data/master/Launcher.lua'),true))()
+end)
+   end,
+})
+
+local PetSimTab = Window:CreateTab("Pet Simulator X😺", nil) -- Title, Image
+local PetSimSection = PetSimTab:CreateSection("Pet Simulator Scripts/GUI")
+
+local Button = PetSimTab:CreateButton({
+   Name = "Pet Simulator GUI 1",
+   Callback = function()
+loadstring(game:HttpGet("https://api.luarmor.net/files/v3/loaders/a82cd5447cbbc4c7be0e8db405555787.lua"))()
+   end,
+})
+
+local Button = PetSimTab:CreateButton({
+   Name = "Pet Simulator GUI 2",
+   Callback = function()
+loadstring(game:HttpGet("https://pastebin.com/raw/95HthyJq"))() 
+   end,
+})
+
+local Button = PetSimTab:CreateButton({
+   Name = "Pet Simulator GUI 3 (GET KEY AT https://bit.ly/3OrovFC)",
+   Callback = function()
+loadstring(game:HttpGetAsync("https://blacktrap.org/blacktrap/users/checkpoint/Auth.txt"))()
+-- Link Get Key : https://bit.ly/3OrovFC 
+   end,
+})
+
+local Button = PetSimTab:CreateButton({
+   Name = "Pet Simulator GUI 4",
+   Callback = function()
+loadstring(game:HttpGet("https://raw.githubusercontent.com/localyactive/projects/main/psx/scavangers"))()
+   end,
+})
+
+local CreTab = Window:CreateTab("Credits🧒🏻", nil) -- Title, Image
+local CreSection = CreTab:CreateSection("Credits of the GUI")
+
+local Label = CreTab:CreateLabel("Name: GHOST")
+local Label = CreTab:CreateLabel("Scriptblox: YoBoyGhost")
+local Label = CreTab:CreateLabel("Main Account: GDoggs_Ghost (lorenzoklaf)")
+local Label = CreTab:CreateLabel("Alt Account 1: StRuCidORFoRtNiTE71")
+local Label = CreTab:CreateLabel("Alt Account 2: ghxst (badasser462)")
+local Label = CreTab:CreateLabel("Alt Account 3: SYSTEM (INeedToTrustUNOT)")
